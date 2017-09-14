@@ -1,0 +1,23 @@
+{
+  "name": "nanogen",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "node ./scripts/build",
+    "serve": "serve ./public"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "ejs": "^2.5.7",
+    "front-matter": "^2.2.0",
+    "fs-extra": "^4.0.2",
+    "glob": "^7.1.2",
+    "marked": "^0.3.6",
+    "serve": "^6.0.6",
+    "standard": "^10.0.3"
+  }
+}

@@ -1,0 +1,16 @@
+---
+title: EJS Page
+---
+<h1>EJS Page!</h1>
+
+<p>Here are some variables: <%= site.title %> | <%= page.title %></p>
+
+<h2>Projects</h2>
+
+<p>The data below is coming from a JSON file.</p>
+
+<ul>
+  <% site.projects.forEach((project) => { %>
+    <li><a href="<%= project.url %>"><%= project.name %></a></li>
+  <% }) %>
+</ul>
