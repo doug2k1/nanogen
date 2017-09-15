@@ -1,3 +1,7 @@
+This example site was generated with <a href="https://github.com/doug2k1/nanogen">NanoGen</a>, a micro static site generator built for learning purposes.
+
+
+
 Text can be **bold**, _italic_, or ~~strikethrough~~.
 
 [Link to another page](another-page).
