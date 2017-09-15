@@ -7,10 +7,10 @@
 <section class="page-header">
   <h1 class="project-name"><%= site.title %></h1>
   <h2 class="project-tagline"><%= site.description %></h2>
-  <a href="/" class="btn">Home</a>
-  <a href="/another-page" class="btn">Another Page</a>
-  <a href="/ejs-page" class="btn">EJS Page</a>
-  <a href="/html-page" class="btn">HTML Page</a>
+  <a href="<%= site.basePath %>/" class="btn">Home</a>
+  <a href="<%= site.basePath %>/another-page" class="btn">Another Page</a>
+  <a href="<%= site.basePath %>/ejs-page" class="btn">EJS Page</a>
+  <a href="<%= site.basePath %>/html-page" class="btn">HTML Page</a>
   <a href="https://github.com/doug2k1/nanogen" class="btn">GitHub</a>
 </section>
 

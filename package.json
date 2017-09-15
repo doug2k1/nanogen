@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "node ./scripts/build",
+    "build:prod": "NODE_ENV=production node ./scripts/build",
     "serve": "serve ./public"
   },
   "keywords": [],
