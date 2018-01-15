@@ -14,11 +14,11 @@
   "dependencies": {},
   "devDependencies": {
     "ejs": "^2.5.7",
-    "front-matter": "^2.2.0",
-    "fs-extra": "^4.0.2",
+    "front-matter": "^2.3.0",
+    "fs-extra": "^5.0.0",
     "glob": "^7.1.2",
-    "marked": "^0.3.6",
-    "serve": "^6.0.6",
+    "marked": "^0.3.12",
+    "serve": "^6.4.8",
     "standard": "^10.0.3"
   }
 }
