@@ -1,4 +1,4 @@
-const projects = require('./src/data/projects')
+const projects = require('./src/data/projects');
 
 module.exports = {
   site: {
@@ -10,4 +10,4 @@ module.exports = {
   build: {
     outputPath: process.env.NODE_ENV === 'production' ? './docs' : './public'
   }
-}
+};

@@ -15,3 +15,7 @@ $ npm run serve
 ```
 
 Go to http://localhost:5000 to see the generated site.
+
+## How to use
+
+If you want to use NanoGen to generate your own site, just fork this repository and add your content to the `src` folder.
