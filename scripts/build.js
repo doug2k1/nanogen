@@ -45,7 +45,9 @@ globP('**/*.@(md|ejs|html)', { cwd: `${srcPath}/pages` })
               pageContent = marked(pageData.body);
               break;
             case '.ejs':
-              pageContent = ejs.render(pageData.body, templateConfig);
+              pageContent = ejs.render(pageData.body, templateConfig, {
+                filename: `${srcPath}/pages/${file}`
+              });
               break;
             default:
               pageContent = pageData.body;
