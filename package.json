@@ -1,25 +1,38 @@
 {
   "name": "nanogen",
   "version": "0.0.1",
-  "description": "",
-  "main": "index.js",
+  "description": "Minimalist static site generator in Node.js",
+  "repository": "doug2k1/nanogen",
+  "keywords": ["static site generator"],
+  "author": "Douglas Matoso <dmatoso@outlook.com> (https://dmatoso.com)",
+  "license": "MIT",
+  "main": "./lib/index.js",
+  "bin": {
+    "nanogen": "./lib/cli.js"
+  },
+  "files": ["lib"],
   "scripts": {
-    "build": "node ./scripts/build",
-    "build:prod": "cross-env NODE_ENV=production node ./scripts/build",
+    "build": "./lib/cli.js",
+    "build:prod": "cross-env NODE_ENV=production ./lib/cli.js",
     "serve": "serve ./public"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {},
-  "devDependencies": {
-    "cross-env": "^5.1.4",
-    "ejs": "^2.5.9",
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "cross-env": "^5.1.6",
+    "ejs": "^2.6.1",
     "front-matter": "^2.3.0",
-    "fs-extra": "^5.0.0",
+    "fs-extra": "^6.0.1",
     "glob": "^7.1.2",
-    "marked": "^0.3.19",
-    "prettier": "^1.12.1",
-    "serve": "^6.5.6"
+    "marked": "^0.4.0",
+    "serve": "^6.5.8"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-node": "^6.0.1",
+    "prettier": "^1.12.1"
   }
 }
