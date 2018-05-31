@@ -1,4 +1,4 @@
-This example site was generated with <a href="https://github.com/doug2k1/nanogen">NanoGen</a>, a micro static site generator built for learning purposes.
+This example site was generated with <a href="https://github.com/doug2k1/nanogen">NanoGen 9</a>, a micro static site generator built for learning purposes.
 
 
 

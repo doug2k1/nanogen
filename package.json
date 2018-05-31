@@ -3,36 +3,38 @@
   "version": "0.0.1",
   "description": "Minimalist static site generator in Node.js",
   "repository": "doug2k1/nanogen",
-  "keywords": ["static site generator"],
+  "keywords": [
+    "static site generator"
+  ],
   "author": "Douglas Matoso <dmatoso@outlook.com> (https://dmatoso.com)",
   "license": "MIT",
   "main": "./lib/index.js",
   "bin": {
     "nanogen": "./lib/cli.js"
   },
-  "files": ["lib"],
-  "scripts": {
-    "build": "./lib/cli.js",
-    "build:prod": "cross-env NODE_ENV=production ./lib/cli.js",
-    "serve": "serve ./public"
-  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {},
   "engines": {
     "node": ">=6.0.0"
   },
   "dependencies": {
     "chalk": "^2.4.1",
-    "cross-env": "^5.1.6",
+    "chokidar": "^2.0.3",
     "ejs": "^2.6.1",
     "front-matter": "^2.3.0",
     "fs-extra": "^6.0.1",
     "glob": "^7.1.2",
+    "live-server": "^1.2.0",
+    "lodash.debounce": "^4.0.8",
     "marked": "^0.4.0",
-    "serve": "^6.5.8"
+    "meow": "^5.0.0"
   },
   "devDependencies": {
     "eslint": "^4.19.1",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-node": "^6.0.1",
-    "prettier": "^1.12.1"
+    "prettier": "^1.13.0"
   }
 }
