@@ -17,7 +17,7 @@ describe('logger', function() {
     log.info('foo');
 
     // then
-    expect(console.log.calledOnce);
+    expect(console.log.calledOnce).to.be.true;
     expect(console.log.getCall(0).args[0]).to.equal(
       chalk`{gray [nanogen]} foo`
     );
@@ -28,7 +28,7 @@ describe('logger', function() {
     log.error('foo');
 
     // then
-    expect(console.log.calledOnce);
+    expect(console.log.calledOnce).to.be.true;
     expect(console.log.getCall(0).args[0]).to.equal(
       chalk`{gray [nanogen]} {red foo}`
     );
@@ -39,7 +39,7 @@ describe('logger', function() {
     log.success('foo');
 
     // then
-    expect(console.log.calledOnce);
+    expect(console.log.calledOnce).to.be.true;
     expect(console.log.getCall(0).args[0]).to.equal(
       chalk`{gray [nanogen]} {green foo}`
     );

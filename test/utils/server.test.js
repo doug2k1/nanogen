@@ -17,7 +17,7 @@ describe('server', function() {
     server.serve({ path: 'foo', port: 3333 });
 
     // then
-    expect(liveServer.start.calledOnce);
+    expect(liveServer.start.calledOnce).to.be.true;
     expect(liveServer.start.getCall(0).args[0]).to.deep.equal({
       port: 3333,
       root: 'foo',

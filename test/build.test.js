@@ -1,16 +1,7 @@
 const fse = require('fs-extra');
 const expect = require('chai').expect;
 const nanogen = require('../lib');
-
-const mockConfig = {
-  build: {
-    srcPath: './test/mock/src',
-    outputPath: './test/mock/public'
-  },
-  site: {
-    title: 'test-site'
-  }
-};
+const mockConfig = require('./mock/mock-config');
 
 describe('build', function() {
   it('should empty output path', function() {
