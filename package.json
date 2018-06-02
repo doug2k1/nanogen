@@ -1,6 +1,6 @@
 {
   "name": "nanogen",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Minimalist static site generator in Node.js",
   "repository": "doug2k1/nanogen",
   "keywords": [
