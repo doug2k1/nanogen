@@ -3,21 +3,18 @@
   "version": "0.0.3",
   "description": "Minimalist static site generator in Node.js",
   "repository": "doug2k1/nanogen",
-  "keywords": [
-    "static site generator"
-  ],
+  "keywords": ["static site generator"],
   "author": "Douglas Matoso <dmatoso@outlook.com> (https://dmatoso.com)",
   "license": "MIT",
   "main": "./lib/index.js",
   "bin": {
     "nanogen": "./lib/cli.js"
   },
-  "files": [
-    "lib"
-  ],
+  "files": ["lib"],
   "scripts": {
     "test": "mocha --recursive",
     "test:coverage": "nyc --reporter=html --reporter=text npm run test",
+    "test:ci": "nyc --reporter=lcov npm run test",
     "prettier": "prettier \"./{lib,test}/**/*.js\"",
     "prettier:check": "npm run prettier -- -l",
     "lint": "eslint \"./{lib,test}/**/*.js\""
