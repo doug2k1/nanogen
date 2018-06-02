@@ -12,8 +12,8 @@ const mockConfig = {
   }
 };
 
-describe('build', () => {
-  it('should empty output path', () => {
+describe('build', function() {
+  it('should empty output path', function() {
     // given
     const testFile = `${mockConfig.build.outputPath}/test.txt`;
     fse.writeFileSync(testFile, 'test');
@@ -25,7 +25,7 @@ describe('build', () => {
     expect(fse.existsSync(testFile)).to.be.false;
   });
 
-  it('should copy assets folder', () => {
+  it('should copy assets folder', function() {
     // when
     nanogen.build(mockConfig);
 
@@ -37,7 +37,7 @@ describe('build', () => {
     ).to.be.true;
   });
 
-  it('should use the default layout', () => {
+  it('should use the default layout', function() {
     // when
     nanogen.build(mockConfig);
 
@@ -50,7 +50,7 @@ describe('build', () => {
     expect(page).to.have.string('default-layout-end');
   });
 
-  it('should use custom layout', () => {
+  it('should use custom layout', function() {
     // when
     nanogen.build(mockConfig);
 
@@ -63,7 +63,7 @@ describe('build', () => {
     expect(page).to.have.string('custom-layout-end');
   });
 
-  it('should generate pages from markdown', () => {
+  it('should generate pages from markdown', function() {
     // when
     nanogen.build(mockConfig);
 
@@ -81,7 +81,7 @@ describe('build', () => {
     expect(page2).to.have.string('<p>markdown-page-2</p>');
   });
 
-  it('should generate pages from ejs', () => {
+  it('should generate pages from ejs', function() {
     // when
     nanogen.build(mockConfig);
 
@@ -99,7 +99,7 @@ describe('build', () => {
     expect(page2).to.have.string('<p>ejs-2</p>');
   });
 
-  it('should generate pages from html', () => {
+  it('should generate pages from html', function() {
     // when
     nanogen.build(mockConfig);
 
@@ -117,7 +117,7 @@ describe('build', () => {
     expect(page2).to.have.string('<p>html-2</p>');
   });
 
-  it('should inject site config', () => {
+  it('should inject site config', function() {
     // when
     nanogen.build(mockConfig);
 
@@ -130,7 +130,7 @@ describe('build', () => {
     expect(page).to.have.string('site title on page: test-site');
   });
 
-  it('should inject front matter', () => {
+  it('should inject front matter', function() {
     // when
     nanogen.build(mockConfig);
 
