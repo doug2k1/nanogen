@@ -15,6 +15,7 @@ const mockConfig = {
 describe('build', function() {
   it('should empty output path', function() {
     // given
+    fse.mkdirsSync(mockConfig.build.outputPath);
     const testFile = `${mockConfig.build.outputPath}/test.txt`;
     fse.writeFileSync(testFile, 'test');
 
