@@ -3,12 +3,12 @@ const projects = require('./src/data/projects');
 module.exports = {
   build: {
     srcPath: './src',
-    outputPath: process.env.NODE_ENV === 'production' ? './docs' : './public'
+    outputPath: './docs'
   },
   site: {
-    title: 'NanoGen',
-    description: 'Micro Static Site Generator in Node.js',
-    basePath: process.env.NODE_ENV === 'production' ? '/nanogen' : '',
+    title: 'nanogen',
+    description: 'Minimalist static site generator in Node.js',
+    basePath: '/nanogen',
     projects
   }
 };
