@@ -3,7 +3,7 @@
 **This module is not ready yet!**
 
 [![npm](https://img.shields.io/npm/v/nanogen.svg)](https://www.npmjs.com/package/nanogen)
-[![Build Status](https://travis-ci.org/doug2k1/nanogen.svg?branch=master)](https://travis-ci.org/doug2k1/nanogen)
+[![Build Status](https://travis-ci.org/doug2k1/nanogen.svg?branch=cli)](https://travis-ci.org/doug2k1/nanogen)
 
 Micro static site generator in Node.js
 
