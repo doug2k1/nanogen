@@ -1,6 +1,5 @@
 const sinon = require('sinon');
 const expect = require('chai').expect;
-const chalk = require('chalk');
 const liveServer = require('live-server');
 const server = require('../../lib/utils/server');
 
