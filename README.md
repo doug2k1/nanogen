@@ -21,7 +21,7 @@ Minimalist static site generator, powered by [Node.js](https://nodejs.org/en/)
 
 * [Node.js](https://nodejs.org/en/) installed (6.0.0 or above)
 
-### Zero-config folder structure
+### Zero-config
 
 nanogen can work without a configuration file, as long as your files are organized in the following folder structure:
 
@@ -65,3 +65,27 @@ And then running:
 ```
 nanogen
 ```
+
+The resulting site will be generated at the `/public` folder by default.
+
+## Watch mode
+
+## Configuration
+
+## Layouts
+
+## Pages
+
+## Assets
+
+## Authors
+
+* **Douglas Matoso** - *Initial work* - [doug2k1](https://github.com/doug2k1)
+
+See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
+
+## Acknowledgments
