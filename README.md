@@ -4,6 +4,7 @@
 
 [![npm](https://img.shields.io/npm/v/nanogen.svg)](https://www.npmjs.com/package/nanogen)
 [![Build Status](https://travis-ci.org/doug2k1/nanogen.svg?branch=cli)](https://travis-ci.org/doug2k1/nanogen)
+[![Code Climate](https://img.shields.io/codeclimate/maintainability/doug2k1/nanogen.svg)](https://codeclimate.com/github/doug2k1/nanogen)
 
 Micro static site generator in Node.js
 
