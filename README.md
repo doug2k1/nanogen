@@ -2,6 +2,8 @@
 
 **This module is not ready yet!**
 
+[![npm](https://img.shields.io/npm/v/nanogen.svg)](https://www.npmjs.com/package/nanogen)
+
 Micro static site generator in Node.js
 
 See the post: https://medium.com/douglas-matoso-english/build-static-site-generator-nodejs-8969ebe34b22
