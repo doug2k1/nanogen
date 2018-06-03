@@ -4,7 +4,7 @@ module.exports = {
     outputPath: './docs'
   },
   site: {
-    title: 'nanogen',
+    title: 'Nanogen',
     description: 'Minimalist static site generator in Node.js',
     basePath: process.env.NODE_ENV === 'production' ? '/nanogen' : ''
   }

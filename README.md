@@ -1,4 +1,4 @@
-# nanogen
+# Nanogen
 
 [![npm](https://img.shields.io/npm/v/nanogen.svg)](https://www.npmjs.com/package/nanogen)
 [![Build Status](https://travis-ci.org/doug2k1/nanogen.svg?branch=cli)](https://travis-ci.org/doug2k1/nanogen)
@@ -35,7 +35,7 @@ npx nanogen
 
 ### Zero-config
 
-nanogen can work without a configuration file, as long as your files are organized in the following folder structure:
+Nanogen can work without a configuration file, as long as your files are organized in the following folder structure:
 
 ```
 /
