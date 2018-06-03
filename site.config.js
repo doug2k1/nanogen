@@ -6,6 +6,6 @@ module.exports = {
   site: {
     title: 'nanogen',
     description: 'Minimalist static site generator in Node.js',
-    basePath: ''
+    basePath: process.env.NODE_ENV === 'production' ? '/nanogen' : ''
   }
 };
