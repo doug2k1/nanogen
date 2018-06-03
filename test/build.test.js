@@ -22,11 +22,10 @@ describe('build', function() {
     nanogen.build(mockConfig);
 
     // then
-    expect(fse.existsSync(`${mockConfig.build.outputPath}/assets/asset.txt`)).to
+    expect(fse.existsSync(`${mockConfig.build.outputPath}/asset.txt`)).to.be
+      .true;
+    expect(fse.existsSync(`${mockConfig.build.outputPath}/sub/another.txt`)).to
       .be.true;
-    expect(
-      fse.existsSync(`${mockConfig.build.outputPath}/assets/sub/another.txt`)
-    ).to.be.true;
   });
 
   it('should use the default layout', function() {
