@@ -11,5 +11,12 @@
 <section class="main-content">
   <%- body %>
 </section>
+<div>
+  <% if (page.tags) { %>
+    <% page.tags.forEach(function(tag) { %>
+      <span><%= tag %></span>
+    <% }) %>
+  <% } %>
+</div>
 </body>
 </html>

@@ -8,7 +8,7 @@ module.exports = {
   site: {
     title: 'nanogen',
     description: 'Minimalist static site generator in Node.js',
-    basePath: '/nanogen',
+    basePath: '',
     projects
   }
 };
