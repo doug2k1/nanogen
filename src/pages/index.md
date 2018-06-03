@@ -48,7 +48,7 @@ Nanogen can work without a configuration file, as long as your files are organiz
 
 You must have a default layout in `src/layouts/default.ejs`, and this file must have a `<%- body %>` tag to indicate where the pages content should go.
 
-Read more about [Layouts](#layouts).
+Read more about [Layouts](docs/#layouts).
 
 Inside the `pages` folder is where you put ejs, md or html files that will generate the pages of the final site. Any file name and folder structure used here will be transposed to the resulting site. E.g.:
 
@@ -58,7 +58,7 @@ Inside the `pages` folder is where you put ejs, md or html files that will gener
 | src/pages/about.md          | /about.html         |
 | src/pages/projects/page.ejs | /projects/page.html |
 
-Read more about [Pages](#pages).
+Read more about [Pages](docs/#pages).
 
 To build the site run on the command line:
 
@@ -72,4 +72,4 @@ The resulting site will be generated at the `/public` folder by default.
 
 ## Docs
 
-[Read the full documentation](docs)
+[Read the full documentation](docs/)
