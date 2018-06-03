@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+<title>nanogen</title>
+<meta name="description" content="Minimalist static site generator in Node.js"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#157878">
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="/css/styles.css">
+
+</head>
+<body>
+<section class="page-header">
+  <h1 class="project-name">nanogen</h1>
+  <h2 class="project-tagline">Minimalist static site generator in Node.js</h2>
+  <a href="/" class="btn">Home</a>
+  <a href="/docs/" class="btn">Docs</a>
+  <a href="https://github.com/doug2k1/nanogen" class="btn">GitHub</a>
+</section>
+<section class="main-content">
+  
+  <h1 id="docs">Docs</h1>
+<h2 id="watch-mode">Watch mode</h2>
+<p>Run with the flag <code>-w</code> to enter watch mode. </p>
+<pre><code>nanogen -w</code></pre><p>The site will generated and served on a local server at <a href="http://localhost:3000">http://localhost:3000</a>. Any file modification will trigger a site rebuild automatically and the browser page will be refreshed.</p>
+<p>You can change the server port with the <code>-p</code> flag:</p>
+<pre><code>nanogen -w -p 5000</code></pre><h2 id="configuration">Configuration</h2>
+<p>You can change the source and destination folders with a configuration file. By default, that file should be named <code>site.config.js</code>.</p>
+<p>Example config file:</p>
+<pre><code class="language-javascript">module.exports = {
+  build: {
+    srcPath: &#39;./site-source&#39;,
+    outputPath: &#39;./site-destination&#39;
+  }
+};</code></pre>
+<p>If you want to use a different file name, it will have to be supplied to the <code>nanogen</code> command:</p>
+<pre><code>nanogen my-config.js</code></pre><h3 id="site-metadata">Site metadata</h3>
+<p>The configuration file can have a <code>site</code> entry, with additional data to be used in your pages:</p>
+<pre><code class="language-javascript">module.exports = {
+  build: {
+    srcPath: &#39;./src&#39;,
+    outputPath: &#39;./public&#39;
+  },
+  site: {
+    title: &#39;My Awesome Site&#39;,
+    author: &#39;Mary Jane&#39;
+  }
+};</code></pre>
+<p>This data can be used inside the layout files or any EJS page. For example, the site title could be displayed in the header of the default layout:</p>
+<pre><code class="language-html">&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;&lt;%= site.title %&gt;&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;%- body %&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<h3 id="page-specific-metadata-front-matter-">Page specific metadata (front matter)</h3>
+<p>You can also have additional data on individual pages, in <a href="http://yaml.org/start.html">YAML</a> format, like this:</p>
+<pre><code class="language-yaml">---
+title: My First Post
+date: 2018-06-01
+tags:
+  - games
+  - stuff
+  - tips
+---
+Contents of the page goes here...</code></pre>
+<p>Make sure this data is at the top of the page, separated by <code>---</code>. This block of page data is usually refered as <strong>front matter</strong>.</p>
+<p>This data can also be used inside the layout, with the <code>page</code> prefix:</p>
+<pre><code class="language-html">&lt;h1&gt;&lt;%= page.title %&gt;&lt;/h1&gt;
+&lt;p&gt;By &lt;%= page.author %&gt;&lt;/p&gt;
+&lt;div&gt;
+  &lt;% if (page.tags) { %&gt;
+    &lt;% page.tags.forEach(function(tag) { %&gt;
+      &lt;span&gt;&lt;%= tag %&gt;&lt;/span&gt;
+    &lt;% }) %&gt;
+  &lt;% } %&gt;
+&lt;/div&gt;</code></pre>
+<h2 id="layouts">Layouts</h2>
+<p>Layouts are EJS files that hold the common parts of all pages, like header, navigation, footer.</p>
+<p>Every layout must have a <code>&lt;%- body %&gt;</code> tag to indicate where the page contents will be inserted. An minimalist layout example would be:</p>
+<pre><code class="language-html">&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;My Site&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;%- body %&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>The default layout is located at <code>laouts/default.ejs</code> in the source folder.</p>
+<h3 id="multiple-layouts">Multiple layouts</h3>
+<p>Your site can have more than one layout. Each page that uses a different layout, should indicate that in the <strong>front matter</strong>, like this:</p>
+<pre><code class="language-yaml">---
+layout: minimal
+---
+Page contents</code></pre>
+<p>The page above would be created with the layout file located at <code>layouts/minimal.ejs</code>.</p>
+<h2 id="pages">Pages</h2>
+<p>The files that will generate the pages of your site must be located at the <code>pages</code> folder. Inside that folder you can have any number of <code>.ejs</code>, <code>.md</code> or <code>.html</code> files, and any number of sub folders. Each source file will generate a resulting html file, combining the layout structure with the page contents.</p>
+<h2 id="partials">Partials</h2>
+<p>You can put reusable blocks of interface components in separate EJS files, and the import that files inside your layout or pages (only on EJS pages), like this:</p>
+<pre><code>&lt;%- include(&#39;../partials/head&#39;) %&gt;</code></pre><p>This will take the contents of the file <code>partials/head.ejs</code> and insert at that location. The file extension can be omitted in the <code>include</code> call.</p>
+<p>It&#39;s not mandatory, but we recommend puting your partials in the <code>partials</code> folder. </p>
+<h2 id="assets">Assets</h2>
+<p>Your site probably will have other kinds of static files like CSS, JS and images. If you put those files inside the <code>assets</code> folder, they will be copied over to the output folder, maintaining the original file names and folder structure.</p>
+
+
+  <footer class="site-footer">
+    <span class="site-footer-owner"><a href="https://github.com/pages-themes/cayman">cayman</a> is maintained by <a href="https://github.com/pages-themes">pages-themes</a>.</span>
+    <span class="site-footer-credits">This page was generated by <a href="https://github.com/doug2k1/nanogen">nanogen</a>.</span>
+  </footer>
+</section>
+</body>
+</html>

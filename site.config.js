@@ -1,5 +1,3 @@
-const projects = require('./src/data/projects');
-
 module.exports = {
   build: {
     srcPath: './src',
@@ -8,7 +6,6 @@ module.exports = {
   site: {
     title: 'nanogen',
     description: 'Minimalist static site generator in Node.js',
-    basePath: '',
-    projects
+    basePath: ''
   }
 };

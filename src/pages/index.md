@@ -1,121 +1,75 @@
-This example site was generated with <a href="https://github.com/doug2k1/nanogen">NanoGen</a>, a micro static site generator built for learning purposes.
+# nanogen
 
-Text can be **bold**, _italic_, or ~~strikethrough~~.
+[![npm](https://img.shields.io/npm/v/nanogen.svg)](https://www.npmjs.com/package/nanogen)
+[![Build Status](https://travis-ci.org/doug2k1/nanogen.svg?branch=cli)](https://travis-ci.org/doug2k1/nanogen)
+[![Maintainability](https://api.codeclimate.com/v1/badges/ab96ad49962fca4a6f2e/maintainability)](https://codeclimate.com/github/doug2k1/nanogen/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/ab96ad49962fca4a6f2e/test_coverage)](https://codeclimate.com/github/doug2k1/nanogen/test_coverage)
 
-[Link to another page](another-page).
+Minimalist static site generator, powered by [Node.js](https://nodejs.org/en/)
 
-There should be whitespace between paragraphs.
+## Features
 
-There should be whitespace between paragraphs. We recommend including a README, or a file with information about your project.
-
-# [](#header-1)Header 1
-
-This is a normal paragraph following a header. GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.
-
-## [](#header-2)Header 2
-
-> This is a blockquote following a header.
->
-> When something is important enough, you do it even if the odds are not in your favor.
-
-### [](#header-3)Header 3
-
-```js
-// Javascript code with syntax highlighting.
-var fun = function lang(l) {
-  dateformat.i18n = require('./lang/' + l)
-  return true;
-}
-```
-
-```ruby
-# Ruby code with syntax highlighting
-GitHubPages::Dependencies.gems.each do |gem, version|
-  s.add_dependency(gem, "= #{version}")
-end
-```
-
-#### [](#header-4)Header 4
-
-*   This is an unordered list following a header.
-*   This is an unordered list following a header.
-*   This is an unordered list following a header.
-
-##### [](#header-5)Header 5
-
-1.  This is an ordered list following a header.
-2.  This is an ordered list following a header.
-3.  This is an ordered list following a header.
-
-###### [](#header-6)Header 6
-
-| head1        | head two          | three |
-|:-------------|:------------------|:------|
-| ok           | good swedish fish | nice  |
-| out of stock | good and plenty   | nice  |
-| ok           | good `oreos`      | hmm   |
-| ok           | good `zoute` drop | yumm  |
-
-### There's a horizontal rule below this.
-
-* * *
-
-### Here is an unordered list:
-
-*   Item foo
-*   Item bar
-*   Item baz
-*   Item zip
-
-### And an ordered list:
-
-1.  Item one
-1.  Item two
-1.  Item three
-1.  Item four
-
-### And a nested list:
-
-- level 1 item
-  - level 2 item
-  - level 2 item
-    - level 3 item
-    - level 3 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-  - level 2 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-- level 1 item
-
-### Small image
-
-![](assets/images/octocat.png)
-
-### Large image
-
-![](assets/images/branching.png)
+* Generate HTML pages from [EJS](http://ejs.co/) and/or Markdown files.
+* The site can have a global layout (the common header, navigation, footer) and some pages may have a specific one.
+* It can read site metadata from a global file and have specific data for individual pages.
+* Allow partials (blocks of reusable interface components)
 
 
-### Definition lists can be used with HTML syntax.
+## Getting started
 
-<dl>
-<dt>Name</dt>
-<dd>Godzilla</dd>
-<dt>Born</dt>
-<dd>1952</dd>
-<dt>Birthplace</dt>
-<dd>Japan</dd>
-<dt>Color</dt>
-<dd>Green</dd>
-</dl>
+### Prerequisites
+
+* [Node.js](https://nodejs.org/en/) installed (6.0.0 or above)
+
+### Install
 
 ```
-Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
+npm i -g nanogen
 ```
 
+Or run the cli directly with npx (available with npm 5.2 or above):
+
 ```
-The final element.
+npx nanogen
 ```
+
+### Zero-config
+
+nanogen can work without a configuration file, as long as your files are organized in the following folder structure:
+
+```
+/
+  src/
+    layouts/
+      default.ejs
+    pages/
+      ... (ejs, md or html files)
+```
+
+You must have a default layout in `src/layouts/default.ejs`, and this file must have a `<%- body %>` tag to indicate where the pages content should go.
+
+Read more about [Layouts](#layouts).
+
+Inside the `pages` folder is where you put ejs, md or html files that will generate the pages of the final site. Any file name and folder structure used here will be transposed to the resulting site. E.g.:
+
+| source folder               | resulting site      |
+|-----------------------------|---------------------|
+| src/pages/index.ejs         | /index.html         |
+| src/pages/about.md          | /about.html         |
+| src/pages/projects/page.ejs | /projects/page.html |
+
+Read more about [Pages](#pages).
+
+To build the site run on the command line:
+
+```
+nanogen
+```
+
+The resulting site will be generated at the `/public` folder by default.
+
+**Note:** the output folder will be clean and regenerated on every build. Do not put files there directly.
+
+## Docs
+
+[Read the full documentation](docs)
