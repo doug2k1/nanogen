@@ -34,7 +34,7 @@ describe('build', function() {
 
     // then
     const page = fse.readFileSync(
-      `${mockConfig.build.outputPath}/md1.html`,
+      `${mockConfig.build.outputPath}/md1/index.html`,
       'utf-8'
     );
     expect(page).to.have.string('default-layout-start');
@@ -47,7 +47,7 @@ describe('build', function() {
 
     // then
     const page = fse.readFileSync(
-      `${mockConfig.build.outputPath}/custom.html`,
+      `${mockConfig.build.outputPath}/custom/index.html`,
       'utf-8'
     );
     expect(page).to.have.string('custom-layout-start');
@@ -60,13 +60,13 @@ describe('build', function() {
 
     // then
     const page1 = fse.readFileSync(
-      `${mockConfig.build.outputPath}/md1.html`,
+      `${mockConfig.build.outputPath}/md1/index.html`,
       'utf-8'
     );
     expect(page1).to.have.string('<p>markdown-page-1</p>');
 
     const page2 = fse.readFileSync(
-      `${mockConfig.build.outputPath}/md/md2.html`,
+      `${mockConfig.build.outputPath}/md/md2/index.html`,
       'utf-8'
     );
     expect(page2).to.have.string('<p>markdown-page-2</p>');
@@ -78,13 +78,13 @@ describe('build', function() {
 
     // then
     const page1 = fse.readFileSync(
-      `${mockConfig.build.outputPath}/ejs1.html`,
+      `${mockConfig.build.outputPath}/ejs1/index.html`,
       'utf-8'
     );
     expect(page1).to.have.string('<p>ejs-1</p>');
 
     const page2 = fse.readFileSync(
-      `${mockConfig.build.outputPath}/ejs/ejs2.html`,
+      `${mockConfig.build.outputPath}/ejs/ejs2/index.html`,
       'utf-8'
     );
     expect(page2).to.have.string('<p>ejs-2</p>');
@@ -96,16 +96,31 @@ describe('build', function() {
 
     // then
     const page1 = fse.readFileSync(
-      `${mockConfig.build.outputPath}/html1.html`,
+      `${mockConfig.build.outputPath}/html1/index.html`,
       'utf-8'
     );
     expect(page1).to.have.string('<p>html-1</p>');
 
     const page2 = fse.readFileSync(
-      `${mockConfig.build.outputPath}/html/html2.html`,
+      `${mockConfig.build.outputPath}/html/html2/index.html`,
       'utf-8'
     );
     expect(page2).to.have.string('<p>html-2</p>');
+  });
+
+  it('should not generate extra directory if filename is index', function() {
+    // when
+    nanogen.build(mockConfig);
+
+    // then
+    expect(
+      fse.existsSync(
+        `${mockConfig.build.outputPath}/with-index/index/index.html`
+      )
+    ).to.be.false;
+    expect(
+      fse.existsSync(`${mockConfig.build.outputPath}/with-index/index.html`)
+    ).to.be.true;
   });
 
   it('should inject site config', function() {
@@ -114,7 +129,7 @@ describe('build', function() {
 
     // then
     const page = fse.readFileSync(
-      `${mockConfig.build.outputPath}/with-site-data.html`,
+      `${mockConfig.build.outputPath}/with-site-data/index.html`,
       'utf-8'
     );
     expect(page).to.have.string('site title on layout: test-site');
@@ -127,13 +142,13 @@ describe('build', function() {
 
     // then
     const page1 = fse.readFileSync(
-      `${mockConfig.build.outputPath}/with-front-matter-md.html`,
+      `${mockConfig.build.outputPath}/with-front-matter-md/index.html`,
       'utf-8'
     );
     expect(page1).to.have.string('front-matter on layout: test-md');
 
     const page2 = fse.readFileSync(
-      `${mockConfig.build.outputPath}/with-front-matter-ejs.html`,
+      `${mockConfig.build.outputPath}/with-front-matter-ejs/index.html`,
       'utf-8'
     );
     expect(page2).to.have.string('front-matter on layout: test-ejs');

@@ -15,7 +15,7 @@
   <h1 class="project-name">Nanogen</h1>
   <h2 class="project-tagline">Minimalist static site generator in Node.js</h2>
   <a href="/nanogen/" class="btn">Home</a>
-  <a href="/nanogen/docs/" class="btn">Docs</a>
+  <a href="/nanogen/docs" class="btn">Docs</a>
   <a href="https://github.com/doug2k1/nanogen" class="btn">GitHub</a>
 </section>
 <section class="main-content">
@@ -98,7 +98,33 @@ layout: minimal
 Page contents</code></pre>
 <p>The page above would be created with the layout file located at <code>layouts/minimal.ejs</code>.</p>
 <h2 id="pages">Pages</h2>
-<p>The files that will generate the pages of your site must be located at the <code>pages</code> folder. Inside that folder you can have any number of <code>.ejs</code>, <code>.md</code> or <code>.html</code> files, and any number of sub folders. Each source file will generate a resulting html file, combining the layout structure with the page contents.</p>
+<p>The files that will generate the pages of your site must be located at the <code>pages</code> folder. Inside that folder you can have any number of <code>.ejs</code>, <code>.md</code> or <code>.html</code> files, and any number of sub folders. Each source file will generate a resulting html file, with the same folder structure, combining the layout structure with the page contents.</p>
+<p>An extra folder will be created at the destination with the name of the original file (without extension) and the resulting page will be saved as <code>index.html</code> inside that folder, except when the name of the original file is already <code>index</code>. This simplify the URLs of the final site.</p>
+<p>Examples:</p>
+<table>
+<thead>
+<tr>
+<th>source folder</th>
+<th>resulting site</th>
+<th>URL to the page</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>src/pages/index.ejs</td>
+<td>/index.html</td>
+<td>site.com</td>
+</tr>
+<tr>
+<td>src/pages/about.md</td>
+<td>/about/index.html</td>
+<td>site.com/about</td>
+</tr>
+<tr>
+<td>src/pages/projects.ejs</td>
+<td>/projects/index.html</td>
+<td>site.com/projects</td>
+</tr>
+</tbody></table>
 <h2 id="partials">Partials</h2>
 <p>You can put reusable blocks of interface components in separate EJS files, and the import that files inside your layout or pages (only on EJS pages), like this:</p>
 <pre><code>&lt;%- include(&#39;../partials/head&#39;) %&gt;</code></pre><p>This will take the contents of the file <code>partials/head.ejs</code> and insert at that location. The file extension can be omitted in the <code>include</code> call.</p>
