@@ -1,6 +1,6 @@
 module.exports = {
   build: {
-    srcPath: './src',
+    srcPath: './site',
     outputPath: './docs'
   },
   site: {

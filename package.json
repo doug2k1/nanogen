@@ -21,7 +21,10 @@
     "test:ci": "nyc --reporter=lcov npm run test",
     "prettier": "prettier \"./{lib,test}/**/*.js\"",
     "prettier:check": "npm run prettier -- -l",
-    "lint": "eslint \"./{lib,test}/**/*.js\""
+    "lint": "eslint \"./{lib,test}/**/*.js\"",
+    "ci": "npm run lint && npm run prettier:check && npm run test:ci",
+    "site:start": "nanogen -w",
+    "site:build": "cross-env NODE_ENV=production nanogen"
   },
   "engines": {
     "node": ">=6.0.0"
@@ -40,12 +43,13 @@
   },
   "devDependencies": {
     "chai": "^4.1.2",
+    "cross-env": "^5.1.6",
     "eslint": "^4.19.1",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-node": "^6.0.1",
     "mocha": "^5.2.0",
-    "nyc": "^11.9.0",
+    "nyc": "^12.0.2",
     "prettier": "^1.13.4",
-    "sinon": "^5.0.10"
+    "sinon": "^5.1.0"
   }
 }
