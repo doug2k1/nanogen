@@ -50,13 +50,7 @@ You must have a default layout in `src/layouts/default.ejs`, and this file must 
 
 Read more about [Layouts](docs/#layouts).
 
-Inside the `pages` folder is where you put ejs, md or html files that will generate the pages of the final site. Any file name and folder structure used here will be transposed to the resulting site. E.g.:
-
-| source folder               | resulting site      |
-|-----------------------------|---------------------|
-| src/pages/index.ejs         | /index.html         |
-| src/pages/about.md          | /about.html         |
-| src/pages/projects/page.ejs | /projects/page.html |
+Inside the `pages` folder is where you put ejs, md or html files that will generate the pages of the final site. Any file name and folder structure used here will be transposed to the resulting site (without the `pages` part). 
 
 Read more about [Pages](docs/#pages).
 

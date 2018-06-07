@@ -15,7 +15,7 @@
   <h1 class="project-name">Nanogen</h1>
   <h2 class="project-tagline">Minimalist static site generator in Node.js</h2>
   <a href="/nanogen/" class="btn">Home</a>
-  <a href="/nanogen/docs/" class="btn">Docs</a>
+  <a href="/nanogen/docs" class="btn">Docs</a>
   <a href="https://github.com/doug2k1/nanogen" class="btn">GitHub</a>
 </section>
 <section class="main-content">
@@ -49,27 +49,7 @@
     pages/
       ... (ejs, md or html files)</code></pre><p>You must have a default layout in <code>src/layouts/default.ejs</code>, and this file must have a <code>&lt;%- body %&gt;</code> tag to indicate where the pages content should go.</p>
 <p>Read more about <a href="docs/#layouts">Layouts</a>.</p>
-<p>Inside the <code>pages</code> folder is where you put ejs, md or html files that will generate the pages of the final site. Any file name and folder structure used here will be transposed to the resulting site. E.g.:</p>
-<table>
-<thead>
-<tr>
-<th>source folder</th>
-<th>resulting site</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>src/pages/index.ejs</td>
-<td>/index.html</td>
-</tr>
-<tr>
-<td>src/pages/about.md</td>
-<td>/about.html</td>
-</tr>
-<tr>
-<td>src/pages/projects/page.ejs</td>
-<td>/projects/page.html</td>
-</tr>
-</tbody></table>
+<p>Inside the <code>pages</code> folder is where you put ejs, md or html files that will generate the pages of the final site. Any file name and folder structure used here will be transposed to the resulting site (without the <code>pages</code> part). </p>
 <p>Read more about <a href="docs/#pages">Pages</a>.</p>
 <p>To build the site run on the command line:</p>
 <pre><code>nanogen</code></pre><p>The resulting site will be generated at the <code>/public</code> folder by default.</p>

@@ -133,7 +133,17 @@ The page above would be created with the layout file located at `layouts/minimal
 
 ## Pages
 
-The files that will generate the pages of your site must be located at the `pages` folder. Inside that folder you can have any number of `.ejs`, `.md` or `.html` files, and any number of sub folders. Each source file will generate a resulting html file, combining the layout structure with the page contents.
+The files that will generate the pages of your site must be located at the `pages` folder. Inside that folder you can have any number of `.ejs`, `.md` or `.html` files, and any number of sub folders. Each source file will generate a resulting html file, with the same folder structure, combining the layout structure with the page contents.
+
+An extra folder will be created at the destination with the name of the original file (without extension) and the resulting page will be saved as `index.html` inside that folder, except when the name of the original file is already `index`. This simplify the URLs of the final site.
+
+Examples:
+
+| source folder               | resulting site       | URL to the page   |
+|-----------------------------|----------------------|-------------------|
+| src/pages/index.ejs         | /index.html          | site.com          |
+| src/pages/about.md          | /about/index.html    | site.com/about    |
+| src/pages/projects.ejs      | /projects/index.html | site.com/projects |
 
 ## Partials
 
