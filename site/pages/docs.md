@@ -116,7 +116,7 @@ Every layout must have a `<%- body %>` tag to indicate where the page contents w
 </html>
 ```
 
-The default layout is located at `laouts/default.ejs` in the source folder.
+The default layout is located at `layouts/default.ejs` in the source folder.
 
 ### Multiple layouts
 
