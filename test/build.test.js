@@ -154,4 +154,34 @@ describe('build', function() {
     expect(page2).to.have.string('front-matter on layout: test-ejs');
     expect(page2).to.have.string('front-matter on page: test-ejs');
   });
+
+  it('should include partial on layout', function() {
+    // when
+    nanogen.build(mockConfig);
+
+    // then
+    const page1 = fse.readFileSync(
+      `${mockConfig.build.outputPath}/ejs1/index.html`,
+      'utf-8'
+    );
+    expect(page1).to.have.string('<p>test-partial-from-layout</p>');
+  });
+
+  it('should include partial on pages', function() {
+    // when
+    nanogen.build(mockConfig);
+
+    // then
+    const page1 = fse.readFileSync(
+      `${mockConfig.build.outputPath}/ejs1/index.html`,
+      'utf-8'
+    );
+    expect(page1).to.have.string('<p>test-partial-from-page-ejs1</p>');
+
+    const page2 = fse.readFileSync(
+      `${mockConfig.build.outputPath}/ejs/ejs2/index.html`,
+      'utf-8'
+    );
+    expect(page2).to.have.string('<p>test-partial-from-page-ejs2</p>');
+  });
 });

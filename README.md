@@ -214,12 +214,12 @@ Examples:
 You can put reusable blocks of interface components in separate EJS files, and the import that files inside your layout or pages (only on EJS pages), like this:
 
 ```
-<%- include('../partials/head') %>
+<%- include('partials/head') %>
 ```
 
 This will take the contents of the file `partials/head.ejs` and insert at that location. The file extension can be omitted in the `include` call.
 
-It's not mandatory, but we recommend puting your partials in the `partials` folder. 
+Note that the path to the partial file is relative to the source folder, no matter the location of the layout or page that is including it. In short, it always start with `partials/...`.
 
 ## Assets
 

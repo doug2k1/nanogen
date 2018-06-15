@@ -127,8 +127,8 @@ Page contents</code></pre>
 </tbody></table>
 <h2 id="partials">Partials</h2>
 <p>You can put reusable blocks of interface components in separate EJS files, and the import that files inside your layout or pages (only on EJS pages), like this:</p>
-<pre><code>&lt;%- include(&#39;../partials/head&#39;) %&gt;</code></pre><p>This will take the contents of the file <code>partials/head.ejs</code> and insert at that location. The file extension can be omitted in the <code>include</code> call.</p>
-<p>It&#39;s not mandatory, but we recommend puting your partials in the <code>partials</code> folder. </p>
+<pre><code>&lt;%- include(&#39;partials/head&#39;) %&gt;</code></pre><p>This will take the contents of the file <code>partials/head.ejs</code> and insert at that location. The file extension can be omitted in the <code>include</code> call.</p>
+<p>Note that the path to the partial file is relative to the source folder, no matter the location of the layout or page that is including it. In short, it always start with <code>partials/...</code>.</p>
 <h2 id="assets">Assets</h2>
 <p>Your site probably will have other kinds of static files like CSS, JS and images. If you put those files inside the <code>assets</code> folder, they will be copied over to the output folder, maintaining the original file names and folder structure.</p>
 
