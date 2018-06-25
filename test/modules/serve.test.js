@@ -1,9 +1,9 @@
 const sinon = require('sinon');
 const expect = require('chai').expect;
 const chokidar = require('chokidar');
-const nanogen = require('../lib');
-const server = require('../lib/utils/server');
-const mockConfig = require('./mock/mock-config');
+const nanogen = require('../../lib');
+const server = require('../../lib/utils/server');
+const mockConfig = require('../mock/mock-config');
 
 describe('serve', function() {
   beforeEach(function() {
@@ -22,13 +22,14 @@ describe('serve', function() {
 
   it('should call server.serve', function() {
     // when
-    nanogen.serve(mockConfig, { port: 3333 });
+    nanogen.serve(mockConfig, { port: 3333, open: true });
 
     // then
     expect(server.serve.calledOnce).to.be.true;
     expect(server.serve.getCall(0).args[0]).to.deep.equal({
       path: mockConfig.build.outputPath,
-      port: 3333
+      port: 3333,
+      open: true
     });
   });
 

@@ -14,14 +14,14 @@ describe('server', function() {
 
   it('should start with parameters', function() {
     // when
-    server.serve({ path: 'foo', port: 3333 });
+    server.serve({ path: 'foo', port: 3333, open: true });
 
     // then
     expect(liveServer.start.calledOnce).to.be.true;
     expect(liveServer.start.getCall(0).args[0]).to.deep.equal({
       port: 3333,
       root: 'foo',
-      open: false,
+      open: true,
       logLevel: 0
     });
   });
