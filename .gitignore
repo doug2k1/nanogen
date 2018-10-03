@@ -6,6 +6,7 @@ node_modules
 # build
 public
 test/mock/public
+test/mock/site
 
 # tests
 .nyc_output

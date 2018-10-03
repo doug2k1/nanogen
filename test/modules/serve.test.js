@@ -22,14 +22,13 @@ describe('serve', function() {
 
   it('should call server.serve', function() {
     // when
-    nanogen.serve(mockConfig, { port: 3333, open: true });
+    nanogen.serve(mockConfig, { port: 3333 });
 
     // then
     expect(server.serve.calledOnce).to.be.true;
     expect(server.serve.getCall(0).args[0]).to.deep.equal({
       path: mockConfig.build.outputPath,
-      port: 3333,
-      open: true
+      port: 3333
     });
   });
 
