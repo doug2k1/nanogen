@@ -7,15 +7,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#157878">
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="/css/styles.css">
+<link rel="stylesheet" href="/nanogen/css/styles.css">
 
 </head>
 <body>
 <section class="page-header">
   <h1 class="project-name">Nanogen</h1>
   <h2 class="project-tagline">Minimalist static site generator in Node.js</h2>
-  <a href="/" class="btn">Home</a>
-  <a href="/docs" class="btn">Docs</a>
+  <a href="/nanogen/" class="btn">Home</a>
+  <a href="/nanogen/docs" class="btn">Docs</a>
   <a href="https://github.com/doug2k1/nanogen" class="btn">GitHub</a>
 </section>
 <section class="main-content">
@@ -36,25 +36,45 @@
 <h2 id="getting-started">Getting started</h2>
 <h3 id="prerequisites">Prerequisites</h3>
 <ul>
-<li><a href="https://nodejs.org/en/">Node.js</a> installed (6.0.0 or above)</li>
+<li><a href="https://nodejs.org/en/">Node.js</a> installed (version 8 or above)</li>
 </ul>
 <h3 id="install">Install</h3>
+<p>You may install it globally with:</p>
 <pre><code>npm i -g nanogen</code></pre><p>Or run the cli directly with npx (available with npm 5.2 or above):</p>
-<pre><code>npx nanogen</code></pre><h3 id="zero-config">Zero-config</h3>
-<p>Nanogen can work without a configuration file, as long as your files are organized in the following folder structure:</p>
+<pre><code>npx nanogen &lt;command&gt;</code></pre><h3 id="creating-a-new-site">Creating a new site</h3>
+<p>To create a brand new site, navigate to the folder you want your site to be and run:</p>
+<pre><code>nanogen init</code></pre><p>This will create a initial site structure like this:</p>
 <pre><code>/
   src/
+    assets/
     layouts/
-      default.ejs
     pages/
-      ... (ejs, md or html files)</code></pre><p>You must have a default layout in <code>src/layouts/default.ejs</code>, and this file must have a <code>&lt;%- body %&gt;</code> tag to indicate where the pages content should go.</p>
+    partials/
+  site.config.js</code></pre><p>To build the site and open it in a browser, run:</p>
+<pre><code>npm start</code></pre><p>There is already a default layout inside the <code>layouts</code> folder, but you may add more.</p>
 <p>Read more about <a href="docs/#layouts">Layouts</a>.</p>
 <p>Inside the <code>pages</code> folder is where you put ejs, md or html files that will generate the pages of the final site. Any file name and folder structure used here will be transposed to the resulting site (without the <code>pages</code> part). </p>
 <p>Read more about <a href="docs/#pages">Pages</a>.</p>
-<p>To build the site run on the command line:</p>
-<pre><code>nanogen</code></pre><p>The resulting site will be generated at the <code>/public</code> folder by default.</p>
-<p><strong>Note:</strong> the output folder will be clean and regenerated on every build. Do not put files there directly.</p>
-<h2 id="docs">Docs</h2>
+<h2 id="available-commands-and-options">Available commands and options</h2>
+<p>You may run <code>nanogen -h</code> to see the available commands and options:</p>
+<pre><code>  Initialize a new site:
+
+    $ nanogen init
+
+  Start the current site:
+
+    $ nanogen start [options]
+
+  Build the current site:
+
+    $ nanogen build [options]
+
+  Options
+    -c, --config &lt;file-path&gt;  Path to the config file (default: site.config.js)
+    -p, --port &lt;port-number&gt;  Port to use for local server (default: 3000)
+
+    -h, --help                Display this help text
+    -v, --version             Display Nanogen version</code></pre><h2 id="docs">Docs</h2>
 <p><a href="docs/">Read the full documentation</a></p>
 
 
