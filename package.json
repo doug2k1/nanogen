@@ -13,7 +13,8 @@
     "nanogen": "./lib/cli.js"
   },
   "files": [
-    "lib"
+    "lib",
+    "template"
   ],
   "scripts": {
     "test": "mocha --recursive",
