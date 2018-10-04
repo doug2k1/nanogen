@@ -19,9 +19,11 @@ Minimalist static site generator, powered by [Node.js](https://nodejs.org/en/)
 
 ### Prerequisites
 
-* [Node.js](https://nodejs.org/en/) installed (6.0.0 or above)
+* [Node.js](https://nodejs.org/en/) installed (version 8 or above)
 
 ### Install
+
+You may install it globally with:
 
 ```
 npm i -g nanogen
@@ -30,23 +32,36 @@ npm i -g nanogen
 Or run the cli directly with npx (available with npm 5.2 or above):
 
 ```
-npx nanogen
+npx nanogen <command>
 ```
 
-### Zero-config
+### Creating a new site
 
-Nanogen can work without a configuration file, as long as your files are organized in the following folder structure:
+To create a brand new site, navigate to the folder you want your site to be and run:
+
+```
+nanogen init
+```
+
+This will create a initial site structure like this:
 
 ```
 /
   src/
+    assets/
     layouts/
-      default.ejs
     pages/
-      ... (ejs, md or html files)
+    partials/
+  site.config.js
 ```
 
-You must have a default layout in `src/layouts/default.ejs`, and this file must have a `<%- body %>` tag to indicate where the pages content should go.
+To build the site and open it in a browser, run:
+
+```
+npm start
+```
+
+There is already a default layout inside the `layouts` folder, but you may add more.
 
 Read more about [Layouts](docs/#layouts).
 
@@ -54,15 +69,30 @@ Inside the `pages` folder is where you put ejs, md or html files that will gener
 
 Read more about [Pages](docs/#pages).
 
-To build the site run on the command line:
+## Available commands and options
+
+You may run `nanogen -h` to see the available commands and options:
 
 ```
-nanogen
+  Initialize a new site:
+
+    $ nanogen init
+
+  Start the current site:
+
+    $ nanogen start [options]
+
+  Build the current site:
+
+    $ nanogen build [options]
+
+  Options
+    -c, --config <file-path>  Path to the config file (default: site.config.js)
+    -p, --port <port-number>  Port to use for local server (default: 3000)
+
+    -h, --help                Display this help text
+    -v, --version             Display Nanogen version
 ```
-
-The resulting site will be generated at the `/public` folder by default.
-
-**Note:** the output folder will be clean and regenerated on every build. Do not put files there directly.
 
 ## Docs
 

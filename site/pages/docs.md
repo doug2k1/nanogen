@@ -1,20 +1,31 @@
 # Docs
 
-## Watch mode
+## Commands
 
-Run with the flag `-w` to enter watch mode. 
+### nanogen init
 
-```
-nanogen -w
-```
+This will generate a brand new site in the current folder.
+
+**Note:** It's advisable to run this command in a empty folder, as it may overwrite existing files.
+
+### nanogen start
 
 The site will generated and served on a local server at http://localhost:3000. Any file modification will trigger a site rebuild automatically and the browser page will be refreshed.
+
+By default it will look for the a configuration file named `site.config.js`.
 
 You can change the server port with the `-p` flag:
 
 ```
-nanogen -w -p 5000
+nanogen start -p 5000
 ```
+
+### nanogen build
+
+This will build the site and save the contents in `/public` folder.
+
+**Note:** the output folder will be cleaned and regenerated on every build. Do not put files there directly.
+
 
 ## Configuration
 
@@ -25,8 +36,8 @@ Example config file:
 ```javascript
 module.exports = {
   build: {
-    srcPath: './site-source',
-    outputPath: './site-destination'
+    srcPath: './src',
+    outputPath: './public'
   }
 };
 ```
@@ -34,7 +45,7 @@ module.exports = {
 If you want to use a different file name, it will have to be supplied to the `nanogen` command:
 
 ```
-nanogen my-config.js
+nanogen start -c my-config.js
 ```
 
 ### Site metadata

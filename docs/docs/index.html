@@ -21,21 +21,28 @@
 <section class="main-content">
   
   <h1 id="docs">Docs</h1>
-<h2 id="watch-mode">Watch mode</h2>
-<p>Run with the flag <code>-w</code> to enter watch mode. </p>
-<pre><code>nanogen -w</code></pre><p>The site will generated and served on a local server at <a href="http://localhost:3000">http://localhost:3000</a>. Any file modification will trigger a site rebuild automatically and the browser page will be refreshed.</p>
+<h2 id="commands">Commands</h2>
+<h3 id="nanogen-init">nanogen init</h3>
+<p>This will generate a brand new site in the current folder.</p>
+<p><strong>Note:</strong> It&#39;s advisable to run this command in a empty folder, as it may overwrite existing files.</p>
+<h3 id="nanogen-start">nanogen start</h3>
+<p>The site will generated and served on a local server at <a href="http://localhost:3000">http://localhost:3000</a>. Any file modification will trigger a site rebuild automatically and the browser page will be refreshed.</p>
+<p>By default it will look for the a configuration file named <code>site.config.js</code>.</p>
 <p>You can change the server port with the <code>-p</code> flag:</p>
-<pre><code>nanogen -w -p 5000</code></pre><h2 id="configuration">Configuration</h2>
+<pre><code>nanogen start -p 5000</code></pre><h3 id="nanogen-build">nanogen build</h3>
+<p>This will build the site and save the contents in <code>/public</code> folder.</p>
+<p><strong>Note:</strong> the output folder will be cleaned and regenerated on every build. Do not put files there directly.</p>
+<h2 id="configuration">Configuration</h2>
 <p>You can change the source and destination folders with a configuration file. By default, that file should be named <code>site.config.js</code>.</p>
 <p>Example config file:</p>
 <pre><code class="language-javascript">module.exports = {
   build: {
-    srcPath: &#39;./site-source&#39;,
-    outputPath: &#39;./site-destination&#39;
+    srcPath: &#39;./src&#39;,
+    outputPath: &#39;./public&#39;
   }
 };</code></pre>
 <p>If you want to use a different file name, it will have to be supplied to the <code>nanogen</code> command:</p>
-<pre><code>nanogen my-config.js</code></pre><h3 id="site-metadata">Site metadata</h3>
+<pre><code>nanogen start -c my-config.js</code></pre><h3 id="site-metadata">Site metadata</h3>
 <p>The configuration file can have a <code>site</code> entry, with additional data to be used in your pages:</p>
 <pre><code class="language-javascript">module.exports = {
   build: {

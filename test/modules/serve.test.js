@@ -1,9 +1,9 @@
 const sinon = require('sinon');
 const expect = require('chai').expect;
 const chokidar = require('chokidar');
-const nanogen = require('../lib');
-const server = require('../lib/utils/server');
-const mockConfig = require('./mock/mock-config');
+const nanogen = require('../../lib');
+const server = require('../../lib/utils/server');
+const mockConfig = require('../mock/mock-config');
 
 describe('serve', function() {
   beforeEach(function() {
