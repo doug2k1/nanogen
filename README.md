@@ -63,11 +63,11 @@ npm start
 
 There is already a default layout inside the `layouts` folder, but you may add more.
 
-Read more about [Layouts](docs/#layouts).
+Read more about [Layouts](https://doug2k1.github.io/nanogen/docs/#layouts).
 
 Inside the `pages` folder is where you put ejs, md or html files that will generate the pages of the final site. Any file name and folder structure used here will be transposed to the resulting site (without the `pages` part). 
 
-Read more about [Pages](docs/#pages).
+Read more about [Pages](https://doug2k1.github.io/nanogen/docs/#pages).
 
 ## Available commands and options
 
