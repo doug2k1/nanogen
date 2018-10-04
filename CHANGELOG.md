@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.4.0] - 2018-10-03
+### Added
+- `init` command to initialize a new site.
+- `start` command to build and start local server in watch mode.
+- `build` command to build the site.
+### Changed
+- `nanogen` won't work without one of the commands above.
+- `-w` flag was removed in favor of the `start` command.
+
+
 ## [0.3.1] - 2018-06-15
 ### Changed
 - Changed EJS rendering to consider include paths relative from the source folder. #9
