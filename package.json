@@ -1,6 +1,6 @@
 {
   "name": "nanogen",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Minimalist static site generator in Node.js",
   "repository": "doug2k1/nanogen",
   "keywords": [
@@ -13,7 +13,8 @@
     "nanogen": "./lib/cli.js"
   },
   "files": [
-    "lib"
+    "lib",
+    "template"
   ],
   "scripts": {
     "test": "mocha --recursive",
