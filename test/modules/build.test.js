@@ -123,6 +123,19 @@ describe('build', function() {
     ).to.be.true;
   });
 
+  it('should not generate extra directory if cleanUrls option is false', function() {
+    // when
+    const config = Object.assign({}, mockConfig);
+    config.build = Object.assign({}, config.build, { cleanUrls: false });
+    nanogen.build(config);
+
+    // then
+    expect(fse.existsSync(`${mockConfig.build.outputPath}/html1/index.html`)).to
+      .be.false;
+    expect(fse.existsSync(`${mockConfig.build.outputPath}/html1.html`)).to.be
+      .true;
+  });
+
   it('should inject site config', function() {
     // when
     nanogen.build(mockConfig);
