@@ -41,6 +41,7 @@
     "lodash.debounce": "^4.0.8",
     "marked": "^0.5.1",
     "meow": "^5.0.0",
+    "node-sass": "^4.11.0",
     "ora": "^3.0.0"
   },
   "devDependencies": {
