@@ -168,6 +168,32 @@ describe('build', function() {
     expect(page2).to.have.string('front-matter on page: test-ejs');
   });
 
+  it('should inject relative URL path', function() {
+    // when
+    nanogen.build(mockConfig);
+
+    // then
+    const page = fse.readFileSync(
+      `${mockConfig.build.outputPath}/with-url-path/index.html`,
+      'utf-8'
+    );
+    expect(page).to.have.string('relative URL: with-url-path/');
+  });
+
+  it('should inject relative URL path without clean URLs', function() {
+    // when
+    const config = Object.assign({}, mockConfig);
+    config.build = Object.assign({}, config.build, { cleanUrls: false });
+    nanogen.build(config);
+
+    // then
+    const page = fse.readFileSync(
+      `${mockConfig.build.outputPath}/with-url-path.html`,
+      'utf-8'
+    );
+    expect(page).to.have.string('relative URL: with-url-path.html');
+  });
+
   it('should include partial on layout', function() {
     // when
     nanogen.build(mockConfig);
