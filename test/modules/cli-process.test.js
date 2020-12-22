@@ -4,14 +4,14 @@ const nanogen = require('../../lib');
 const cli = require('../../lib/modules/cli-process');
 const mockConfig = require('../mock/mock-config');
 
-describe('cli', function() {
-  beforeEach(function() {
+describe('cli', function () {
+  beforeEach(function () {
     sinon.stub(nanogen, 'init');
     sinon.stub(nanogen, 'build');
     sinon.stub(nanogen, 'serve');
   });
 
-  afterEach(function() {
+  afterEach(function () {
     nanogen.init.restore();
     nanogen.build.restore();
     nanogen.serve.restore();
@@ -35,7 +35,7 @@ describe('cli', function() {
     expect(nanogen.serve.called).to.be.false;
   });
 
-  it('should initialize a new site', function() {
+  it('should initialize a new site', function () {
     // when
     cli(['init']);
 
@@ -43,7 +43,7 @@ describe('cli', function() {
     expect(nanogen.init.calledOnce).to.be.true;
   });
 
-  it('should start site with default options', function() {
+  it('should start site with default options', function () {
     // when
     cli(['start']);
 
@@ -52,7 +52,7 @@ describe('cli', function() {
     expect(nanogen.serve.args[0]).to.deep.equal([{}, {}]);
   });
 
-  it('should start site with custom options', function() {
+  it('should start site with custom options', function () {
     // given
     const flags = { config: 'test/mock/mock-config.js', port: 1111 };
 
@@ -64,7 +64,7 @@ describe('cli', function() {
     expect(nanogen.serve.args[0]).to.deep.equal([mockConfig, flags]);
   });
 
-  it('should build site with default options', function() {
+  it('should build site with default options', function () {
     // when
     cli(['build']);
 
@@ -73,7 +73,7 @@ describe('cli', function() {
     expect(nanogen.build.args[0]).to.deep.equal([{}]);
   });
 
-  it('should build site with custom options', function() {
+  it('should build site with custom options', function () {
     // given
     const flags = { config: 'test/mock/mock-config.js' };
 

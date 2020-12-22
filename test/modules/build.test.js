@@ -3,8 +3,8 @@ const expect = require('chai').expect;
 const nanogen = require('../../lib');
 const mockConfig = require('../mock/mock-config');
 
-describe('build', function() {
-  it('should empty output path', function() {
+describe('build', function () {
+  it('should empty output path', function () {
     // given
     fse.mkdirsSync(mockConfig.build.outputPath);
     const testFile = `${mockConfig.build.outputPath}/test.txt`;
@@ -17,7 +17,7 @@ describe('build', function() {
     expect(fse.existsSync(testFile)).to.be.false;
   });
 
-  it('should copy assets folder', function() {
+  it('should copy assets folder', function () {
     // when
     nanogen.build(mockConfig);
 
@@ -28,7 +28,7 @@ describe('build', function() {
       .be.true;
   });
 
-  it('should use the default layout', function() {
+  it('should use the default layout', function () {
     // when
     nanogen.build(mockConfig);
 
@@ -41,7 +41,7 @@ describe('build', function() {
     expect(page).to.have.string('default-layout-end');
   });
 
-  it('should use custom layout', function() {
+  it('should use custom layout', function () {
     // when
     nanogen.build(mockConfig);
 
@@ -54,7 +54,7 @@ describe('build', function() {
     expect(page).to.have.string('custom-layout-end');
   });
 
-  it('should generate pages from markdown', function() {
+  it('should generate pages from markdown', function () {
     // when
     nanogen.build(mockConfig);
 
@@ -72,7 +72,7 @@ describe('build', function() {
     expect(page2).to.have.string('<p>markdown-page-2</p>');
   });
 
-  it('should generate pages from ejs', function() {
+  it('should generate pages from ejs', function () {
     // when
     nanogen.build(mockConfig);
 
@@ -90,7 +90,7 @@ describe('build', function() {
     expect(page2).to.have.string('<p>ejs-2</p>');
   });
 
-  it('should generate pages from html', function() {
+  it('should generate pages from html', function () {
     // when
     nanogen.build(mockConfig);
 
@@ -108,7 +108,7 @@ describe('build', function() {
     expect(page2).to.have.string('<p>html-2</p>');
   });
 
-  it('should not generate extra directory if filename is index', function() {
+  it('should not generate extra directory if filename is index', function () {
     // when
     nanogen.build(mockConfig);
 
@@ -123,7 +123,7 @@ describe('build', function() {
     ).to.be.true;
   });
 
-  it('should not generate extra directory if cleanUrls option is false', function() {
+  it('should not generate extra directory if cleanUrls option is false', function () {
     // when
     const config = Object.assign({}, mockConfig);
     config.build = Object.assign({}, config.build, { cleanUrls: false });
@@ -136,7 +136,7 @@ describe('build', function() {
       .true;
   });
 
-  it('should inject site config', function() {
+  it('should inject site config', function () {
     // when
     nanogen.build(mockConfig);
 
@@ -149,7 +149,7 @@ describe('build', function() {
     expect(page).to.have.string('site title on page: test-site');
   });
 
-  it('should inject front matter', function() {
+  it('should inject front matter', function () {
     // when
     nanogen.build(mockConfig);
 
@@ -168,7 +168,7 @@ describe('build', function() {
     expect(page2).to.have.string('front-matter on page: test-ejs');
   });
 
-  it('should include partial on layout', function() {
+  it('should include partial on layout', function () {
     // when
     nanogen.build(mockConfig);
 
@@ -180,7 +180,7 @@ describe('build', function() {
     expect(page1).to.have.string('<p>test-partial-from-layout</p>');
   });
 
-  it('should include partial on pages', function() {
+  it('should include partial on pages', function () {
     // when
     nanogen.build(mockConfig);
 
