@@ -29,7 +29,8 @@
 <p>The site will generated and served on a local server at <a href="http://localhost:3000">http://localhost:3000</a>. Any file modification will trigger a site rebuild automatically and the browser page will be refreshed.</p>
 <p>By default it will look for the a configuration file named <code>site.config.js</code>.</p>
 <p>You can change the server port with the <code>-p</code> flag:</p>
-<pre><code>nanogen start -p 5000</code></pre><h3 id="nanogen-build">nanogen build</h3>
+<pre><code>nanogen start -p 5000</code></pre>
+<h3 id="nanogen-build">nanogen build</h3>
 <p>This will build the site and save the contents in <code>/public</code> folder.</p>
 <p><strong>Note:</strong> the output folder will be cleaned and regenerated on every build. Do not put files there directly.</p>
 <h2 id="configuration">Configuration</h2>
@@ -42,7 +43,8 @@
   }
 };</code></pre>
 <p>If you want to use a different file name, it will have to be supplied to the <code>nanogen</code> command:</p>
-<pre><code>nanogen start -c my-config.js</code></pre><h3 id="site-metadata">Site metadata</h3>
+<pre><code>nanogen start -c my-config.js</code></pre>
+<h3 id="site-metadata">Site metadata</h3>
 <p>The configuration file can have a <code>site</code> entry, with additional data to be used in your pages:</p>
 <pre><code class="language-javascript">module.exports = {
   build: {
@@ -63,7 +65,7 @@
     &lt;%- body %&gt;
   &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-<h3 id="page-specific-metadata-front-matter-">Page specific metadata (front matter)</h3>
+<h3 id="page-specific-metadata-front-matter">Page specific metadata (front matter)</h3>
 <p>You can also have additional data on individual pages, in <a href="http://yaml.org/start.html">YAML</a> format, like this:</p>
 <pre><code class="language-yaml">---
 title: My First Post
@@ -134,7 +136,8 @@ Page contents</code></pre>
 </tbody></table>
 <h2 id="partials">Partials</h2>
 <p>You can put reusable blocks of interface components in separate EJS files, and the import that files inside your layout or pages (only on EJS pages), like this:</p>
-<pre><code>&lt;%- include(&#39;partials/head&#39;) %&gt;</code></pre><p>This will take the contents of the file <code>partials/head.ejs</code> and insert at that location. The file extension can be omitted in the <code>include</code> call.</p>
+<pre><code>&lt;%- include(&#39;partials/head&#39;) %&gt;</code></pre>
+<p>This will take the contents of the file <code>partials/head.ejs</code> and insert at that location. The file extension can be omitted in the <code>include</code> call.</p>
 <p>Note that the path to the partial file is relative to the source folder, no matter the location of the layout or page that is including it. In short, it always start with <code>partials/...</code>.</p>
 <h2 id="assets">Assets</h2>
 <p>Your site probably will have other kinds of static files like CSS, JS and images. If you put those files inside the <code>assets</code> folder, they will be copied over to the output folder, maintaining the original file names and folder structure.</p>

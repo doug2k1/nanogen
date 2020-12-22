@@ -3,16 +3,16 @@ const expect = require('chai').expect;
 const chalk = require('chalk');
 const log = require('../../lib/utils/logger');
 
-describe('logger', function() {
-  beforeEach(function() {
+describe('logger', function () {
+  beforeEach(function () {
     sinon.spy(console, 'log');
   });
 
-  afterEach(function() {
+  afterEach(function () {
     console.log.restore();
   });
 
-  it('should log info', function() {
+  it('should log info', function () {
     // when
     log.info('foo');
 
@@ -23,7 +23,7 @@ describe('logger', function() {
     );
   });
 
-  it('should log error', function() {
+  it('should log error', function () {
     // when
     log.error('foo');
 
@@ -34,7 +34,7 @@ describe('logger', function() {
     );
   });
 
-  it('should log success', function() {
+  it('should log success', function () {
     // when
     log.success('foo');
 

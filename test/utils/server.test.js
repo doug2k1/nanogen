@@ -3,16 +3,16 @@ const expect = require('chai').expect;
 const liveServer = require('live-server');
 const server = require('../../lib/utils/server');
 
-describe('server', function() {
-  beforeEach(function() {
+describe('server', function () {
+  beforeEach(function () {
     sinon.stub(liveServer, 'start');
   });
 
-  afterEach(function() {
+  afterEach(function () {
     liveServer.start.restore();
   });
 
-  it('should start with parameters', function() {
+  it('should start with parameters', function () {
     // when
     server.serve({ path: 'foo', port: 3333, open: true });
 
@@ -22,7 +22,7 @@ describe('server', function() {
       port: 3333,
       root: 'foo',
       open: true,
-      logLevel: 0
+      logLevel: 0,
     });
   });
 });
