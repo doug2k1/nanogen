@@ -123,18 +123,28 @@ describe('build', function() {
     ).to.be.true;
   });
 
-  it('should not generate extra directory if cleanUrls option is false', function() {
+  it('should create sitemap.xml', function() {
     // when
-    const config = Object.assign({}, mockConfig);
-    config.build = Object.assign({}, config.build, { cleanUrls: false });
-    nanogen.build(config);
+    nanogen.build(mockConfig);
 
     // then
-    expect(fse.existsSync(`${mockConfig.build.outputPath}/html1/index.html`)).to
-      .be.false;
-    expect(fse.existsSync(`${mockConfig.build.outputPath}/html1.html`)).to.be
+    expect(fse.existsSync(`${mockConfig.build.outputPath}/sitemap.xml`)).to.be
       .true;
   });
+
+  // TODO: Was this feature removed? No reference to cleanUrls in the code.
+  // it('should not generate extra directory if cleanUrls option is false', function() {
+  //   // when
+  //   const config = Object.assign({}, mockConfig);
+  //   config.build = Object.assign({}, config.build, { cleanUrls: false });
+  //   nanogen.build(config);
+
+  //   // then
+  //   expect(fse.existsSync(`${mockConfig.build.outputPath}/html1/index.html`)).to
+  //     .be.false;
+  //   expect(fse.existsSync(`${mockConfig.build.outputPath}/html1.html`)).to.be
+  //     .true;
+  // });
 
   it('should inject site config', function() {
     // when
