@@ -123,6 +123,15 @@ describe('build', function() {
     ).to.be.true;
   });
 
+  it('should create sitemap.xml', function() {
+    // when
+    nanogen.build(mockConfig);
+
+    // then
+    expect(fse.existsSync(`${mockConfig.build.outputPath}/sitemap.xml`)).to.be
+      .true;
+  });
+
   it('should not generate extra directory if cleanUrls option is false', function() {
     // when
     const config = Object.assign({}, mockConfig);
