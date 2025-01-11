@@ -7,6 +7,7 @@ node_modules
 public
 test/mock/public
 test/mock/site
+dist
 
 # tests
 .nyc_output
