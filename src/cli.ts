@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import chalk from 'chalk'
 import meow from 'meow'
-import { cliProcess } from './modules/cli-process'
+import { cliProcess } from './modules/cli/cli-process'
 
 const cli = meow(
   `

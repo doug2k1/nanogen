@@ -1,8 +1,8 @@
-import path from 'path'
-import { log } from '../utils/logger'
-import { build } from './build'
-import { init } from './init'
-import { serve, ServeFlags } from './serve'
+import { log } from '@/libs/logger/logger'
+import { build } from '@/modules/build/build'
+import { init } from '@/modules/init/init'
+import { serve, ServeFlags } from '@/modules/serve/serve'
+import path from 'node:path'
 
 interface Flags extends ServeFlags {
   config?: string

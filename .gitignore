@@ -2,11 +2,10 @@
 .vscode
 .DS_Store
 node_modules
+.tmp
 
 # build
 public
-test/mock/public
-test/mock/site
 dist
 
 # tests

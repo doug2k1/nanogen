@@ -1,21 +1,20 @@
+import { parseOptions } from '@/libs/config/parser'
+import { log } from '@/libs/logger/logger'
 import ejs from 'ejs'
 import frontMatter from 'front-matter'
 import fse from 'fs-extra'
 import { glob } from 'glob'
 import { marked } from 'marked'
-import path from 'path'
-import { log } from '../utils/logger'
-import { parseOptions } from '../utils/parser'
+import path from 'node:path'
+import { hrtime } from 'node:process'
 
 /**
  * Build the site
  */
 export const build = (options = {}) => {
   log.info('Building site...')
-  const startTime = process.hrtime()
+  const startTime = hrtime.bigint()
   const { srcPath, outputPath, cleanUrls, site } = parseOptions(options)
-
-  console.log({ srcPath, outputPath, cleanUrls, site })
 
   // clear destination folder
   fse.emptyDirSync(outputPath)
@@ -33,9 +32,9 @@ export const build = (options = {}) => {
   )
 
   // display build time
-  const timeDiff = process.hrtime(startTime)
-  const duration = timeDiff[0] * 1000 + timeDiff[1] / 1e6
-  log.success(`Site built succesfully in ${duration}ms`)
+  const timeDiff = process.hrtime.bigint() - startTime
+  const duration = Number(timeDiff) / 1e6
+  log.success(`Site built successfully in ${duration} ms`)
 }
 
 /**

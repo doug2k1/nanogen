@@ -2,7 +2,10 @@
   "name": "nanogen",
   "version": "0.4.3",
   "description": "Minimalist static site generator in Node.js",
-  "repository": "doug2k1/nanogen",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/doug2k1/nanogen.git"
+  },
   "keywords": [
     "static site generator"
   ],
@@ -18,8 +21,7 @@
     "nanogen": "bin/run"
   },
   "directories": {
-    "lib": "src",
-    "bin": "bin"
+    "doc": "docs"
   },
   "files": [
     "dist",
@@ -30,7 +32,7 @@
     "build": "tsup-node",
     "clean": "rimraf dist",
     "typecheck": "tsc --noEmit",
-    "test": "mocha --recursive",
+    "test": "vitest",
     "test:coverage": "nyc --reporter=html --reporter=text npm run test",
     "test:ci": "nyc --reporter=lcov npm run test",
     "prettier": "prettier \"./{lib,test}/**/*.js\"",
@@ -38,8 +40,8 @@
     "lint": "eslint \"./{lib,test}/**/*.js\"",
     "ci": "npm run lint && npm run prettier:check && npm run test:ci",
     "start": "tsx src/cli.ts",
-    "site:start": "nanogen start",
-    "site:build": "cross-env NODE_ENV=production nanogen build"
+    "start:docs": "bin/run start",
+    "build:docs": "cross-env NODE_ENV=production bin/run build"
   },
   "engines": {
     "node": ">=20.0.0"
@@ -49,7 +51,7 @@
     "chokidar": "^4.0.3",
     "ejs": "^3.1.10",
     "front-matter": "^4.0.2",
-    "fs-extra": "^11.2.0",
+    "fs-extra": "^11.3.0",
     "glob": "^11.0.1",
     "live-server": "^1.2.2",
     "lodash.debounce": "^4.0.8",
@@ -63,20 +65,24 @@
     "@types/fs-extra": "^11.0.4",
     "@types/live-server": "^1.2.3",
     "@types/lodash.debounce": "^4.0.9",
-    "@types/meow": "^5.0.0",
-    "@types/node": "^22.10.5",
-    "chai": "^5.1.2",
+    "@types/meow": "^6.0.0",
+    "@types/node": "^22.10.6",
     "cross-env": "^7.0.3",
     "eslint": "^9.18.0",
-    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-node": "^11.1.0",
-    "mocha": "^11.0.1",
+    "nanogen": "^0.4.2",
     "nyc": "^17.1.0",
     "prettier": "^3.4.2",
     "rimraf": "^6.0.1",
-    "sinon": "^19.0.2",
     "tsup": "^8.3.5",
     "tsx": "^4.19.2",
-    "typescript": "^5.7.3"
-  }
+    "typescript": "^5.7.3",
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^2.1.8"
+  },
+  "bugs": {
+    "url": "https://github.com/doug2k1/nanogen/issues"
+  },
+  "homepage": "https://github.com/doug2k1/nanogen#readme"
 }

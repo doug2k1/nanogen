@@ -1,18 +1,17 @@
+import { Options, parseOptions } from '@/libs/config/parser'
+import { log } from '@/libs/logger/logger'
+import { server } from '@/libs/server/server'
+import { build } from '@/modules/build/build'
 import chokidar from 'chokidar'
 import debounce from 'lodash.debounce'
-import { log } from '../utils/logger'
-import { Options, parseOptions } from '../utils/parser'
-import { server } from '../utils/server'
-import { build } from './build'
-
-/**
- * Serve the site in watch mode
- */
 
 export interface ServeFlags {
   port?: string
 }
 
+/**
+ * Serve the site in watch mode
+ */
 export const serve = (options: Options, flags: ServeFlags): void => {
   log.info(`Starting local server at http://localhost:${flags.port}`)
 
