@@ -11,17 +11,16 @@ Minimalist static site generator, powered by [Node.js](https://nodejs.org/en/)
 
 ## Features
 
-* Generate HTML pages from [EJS](http://ejs.co/) and/or Markdown files.
-* The site can have a global layout (the common header, navigation, footer) and some pages may have a specific one.
-* It can read site metadata from a global file and have specific data for individual pages.
-* Allow partials (blocks of reusable interface components)
-
+- Generate HTML pages from [EJS](http://ejs.co/) and/or Markdown files.
+- The site can have a global layout (the common header, navigation, footer) and some pages may have a specific one.
+- It can read site metadata from a global file and have specific data for individual pages.
+- Allow partials (blocks of reusable interface components)
 
 ## Getting started
 
 ### Prerequisites
 
-* [Node.js](https://nodejs.org/en/) installed (version 8 or above)
+- [Node.js](https://nodejs.org/en/) installed (version 8 or above)
 
 ### Install
 
@@ -67,7 +66,7 @@ There is already a default layout inside the `layouts` folder, but you may add m
 
 Read more about [Layouts](docs/#layouts).
 
-Inside the `pages` folder is where you put ejs, md or html files that will generate the pages of the final site. Any file name and folder structure used here will be transposed to the resulting site (without the `pages` part). 
+Inside the `pages` folder is where you put ejs, md or html files that will generate the pages of the final site. Any file name and folder structure used here will be transposed to the resulting site (without the `pages` part).
 
 Read more about [Pages](docs/#pages).
 

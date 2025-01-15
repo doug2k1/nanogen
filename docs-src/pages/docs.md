@@ -26,7 +26,6 @@ This will build the site and save the contents in `/public` folder.
 
 **Note:** the output folder will be cleaned and regenerated on every build. Do not put files there directly.
 
-
 ## Configuration
 
 You can change the source and destination folders with a configuration file. By default, that file should be named `site.config.js`.
@@ -37,9 +36,9 @@ Example config file:
 module.exports = {
   build: {
     srcPath: './src',
-    outputPath: './public'
-  }
-};
+    outputPath: './public',
+  },
+}
 ```
 
 If you want to use a different file name, it will have to be supplied to the `nanogen` command:
@@ -56,13 +55,13 @@ The configuration file can have a `site` entry, with additional data to be used 
 module.exports = {
   build: {
     srcPath: './src',
-    outputPath: './public'
+    outputPath: './public',
   },
   site: {
     title: 'My Awesome Site',
-    author: 'Mary Jane'
-  }
-};
+    author: 'Mary Jane',
+  },
+}
 ```
 
 This data can be used inside the layout files or any EJS page. For example, the site title could be displayed in the header of the default layout:
@@ -102,11 +101,9 @@ This data can also be used inside the layout, with the `page` prefix:
 <h1><%= page.title %></h1>
 <p>By <%= page.author %></p>
 <div>
-  <% if (page.tags) { %>
-    <% page.tags.forEach(function(tag) { %>
-      <span><%= tag %></span>
-    <% }) %>
-  <% } %>
+  <% if (page.tags) { %> <% page.tags.forEach(function(tag) { %>
+  <span><%= tag %></span>
+  <% }) %> <% } %>
 </div>
 ```
 
@@ -150,11 +147,11 @@ An extra folder will be created at the destination with the name of the original
 
 Examples:
 
-| source folder               | resulting site       | URL to the page   |
-|-----------------------------|----------------------|-------------------|
-| src/pages/index.ejs         | /index.html          | site.com          |
-| src/pages/about.md          | /about/index.html    | site.com/about    |
-| src/pages/projects.ejs      | /projects/index.html | site.com/projects |
+| source folder          | resulting site       | URL to the page   |
+| ---------------------- | -------------------- | ----------------- |
+| src/pages/index.ejs    | /index.html          | site.com          |
+| src/pages/about.md     | /about/index.html    | site.com/about    |
+| src/pages/projects.ejs | /projects/index.html | site.com/projects |
 
 ## Partials
 
