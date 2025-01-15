@@ -67,6 +67,7 @@
     "@types/lodash.debounce": "^4.0.9",
     "@types/meow": "^6.0.0",
     "@types/node": "^22.10.6",
+    "@vitest/coverage-v8": "^2.1.8",
     "cross-env": "^7.0.3",
     "eslint": "^9.18.0",
     "eslint-config-prettier": "^10.0.1",
