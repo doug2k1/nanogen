@@ -1,9 +1,11 @@
-module.exports = {
+export default {
   build: {
-    srcPath: './src',
-    outputPath: './public'
+    srcPath: './docs-src',
+    outputPath: './docs',
   },
   site: {
-    title: 'Nanogen site'
-  }
-};
+    title: 'Nanogen',
+    description: 'Minimalist static site generator in Node.js',
+    basePath: process.env.NODE_ENV === 'production' ? '/nanogen' : '',
+  },
+}

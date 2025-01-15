@@ -7,15 +7,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#157878">
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="/nanogen/css/styles.css">
+<link rel="stylesheet" href="/css/styles.css">
 
 </head>
 <body>
 <section class="page-header">
   <h1 class="project-name">Nanogen</h1>
   <h2 class="project-tagline">Minimalist static site generator in Node.js</h2>
-  <a href="/nanogen/" class="btn">Home</a>
-  <a href="/nanogen/docs" class="btn">Docs</a>
+  <a href="/" class="btn">Home</a>
+  <a href="/docs" class="btn">Docs</a>
   <a href="https://github.com/doug2k1/nanogen" class="btn">GitHub</a>
 </section>
 <section class="main-content">
@@ -40,9 +40,9 @@
 <pre><code class="language-javascript">module.exports = {
   build: {
     srcPath: &#39;./src&#39;,
-    outputPath: &#39;./public&#39;
-  }
-};
+    outputPath: &#39;./public&#39;,
+  },
+}
 </code></pre>
 <p>If you want to use a different file name, it will have to be supplied to the <code>nanogen</code> command:</p>
 <pre><code>nanogen start -c my-config.js
@@ -52,13 +52,13 @@
 <pre><code class="language-javascript">module.exports = {
   build: {
     srcPath: &#39;./src&#39;,
-    outputPath: &#39;./public&#39;
+    outputPath: &#39;./public&#39;,
   },
   site: {
     title: &#39;My Awesome Site&#39;,
-    author: &#39;Mary Jane&#39;
-  }
-};
+    author: &#39;Mary Jane&#39;,
+  },
+}
 </code></pre>
 <p>This data can be used inside the layout files or any EJS page. For example, the site title could be displayed in the header of the default layout:</p>
 <pre><code class="language-html">&lt;html&gt;
@@ -87,11 +87,9 @@ Contents of the page goes here...
 <pre><code class="language-html">&lt;h1&gt;&lt;%= page.title %&gt;&lt;/h1&gt;
 &lt;p&gt;By &lt;%= page.author %&gt;&lt;/p&gt;
 &lt;div&gt;
-  &lt;% if (page.tags) { %&gt;
-    &lt;% page.tags.forEach(function(tag) { %&gt;
-      &lt;span&gt;&lt;%= tag %&gt;&lt;/span&gt;
-    &lt;% }) %&gt;
-  &lt;% } %&gt;
+  &lt;% if (page.tags) { %&gt; &lt;% page.tags.forEach(function(tag) { %&gt;
+  &lt;span&gt;&lt;%= tag %&gt;&lt;/span&gt;
+  &lt;% }) %&gt; &lt;% } %&gt;
 &lt;/div&gt;
 </code></pre>
 <h2>Layouts</h2>
