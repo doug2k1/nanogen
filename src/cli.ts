@@ -1,28 +1,28 @@
 #!/usr/bin/env node
-import chalk from 'chalk'
 import meow from 'meow'
+import pc from 'picocolors'
 import { cliProcess } from './modules/cli/cli-process'
 
 const cli = meow(
   `
-    ${chalk.yellow('Initialize a new site:')}
+    ${pc.yellow('Initialize a new site:')}
 
-      ${chalk.cyan('$ nanogen init')}
+      ${pc.cyan('$ nanogen init')}
 
-    ${chalk.yellow('Start the current site:')}
+    ${pc.yellow('Start the current site:')}
 
-      ${chalk.cyan('$ nanogen start [options]')}
+      ${pc.cyan('$ nanogen start [options]')}
 
-    ${chalk.yellow('Build the current site:')}
+    ${pc.yellow('Build the current site:')}
 
-      ${chalk.cyan('$ nanogen build [options]')}
+      ${pc.cyan('$ nanogen build [options]')}
 
-    ${chalk.underline(chalk.yellow('Options'))}
-      ${chalk.cyan('-c, --config <file-path>')}  Path to the config file (default: site.config.js)
-      ${chalk.cyan('-p, --port <port-number>')}  Port to use for local server (default: 3000)
+    ${pc.underline(pc.yellow('Options'))}
+      ${pc.cyan('-c, --config <file-path>')}  Path to the config file (default: site.config.js)
+      ${pc.cyan('-p, --port <port-number>')}  Port to use for local server (default: 3000)
       
-      ${chalk.cyan('-h, --help')}                Display this help text
-      ${chalk.cyan('-v, --version')}             Display Nanogen version
+      ${pc.cyan('-h, --help')}                Display this help text
+      ${pc.cyan('-v, --version')}             Display Nanogen version
   `,
   {
     importMeta: import.meta,

@@ -1,15 +1,15 @@
-import chalk from 'chalk'
+import pc from 'picocolors'
 
 export const log = {
   info(message: string) {
-    console.log(`${chalk.gray('[nanogen]')} ${message}`)
+    console.log(`${pc.gray('[nanogen]')} ${message}`)
   },
 
   success(message: string) {
-    console.log(`${chalk.gray('[nanogen]')} ${chalk.green(message)}`)
+    console.log(`${pc.gray('[nanogen]')} ${pc.green(message)}`)
   },
 
   error(message: string) {
-    console.log(`${chalk.gray('[nanogen]')} ${chalk.red(message)}`)
+    console.log(`${pc.gray('[nanogen]')} ${pc.red(message)}`)
   },
 }

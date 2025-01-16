@@ -1,4 +1,4 @@
-import chalk from 'chalk'
+import pc from 'picocolors'
 import {
   afterEach,
   beforeEach,
@@ -25,7 +25,7 @@ describe('logger', () => {
     log.info('test message')
 
     expect(consoleLogSpy).toHaveBeenCalledWith(
-      `${chalk.gray('[nanogen]')} test message`,
+      `${pc.gray('[nanogen]')} test message`,
     )
   })
 
@@ -33,7 +33,7 @@ describe('logger', () => {
     log.success('test message')
 
     expect(consoleLogSpy).toHaveBeenCalledWith(
-      `${chalk.gray('[nanogen]')} ${chalk.green('test message')}`,
+      `${pc.gray('[nanogen]')} ${pc.green('test message')}`,
     )
   })
 
@@ -41,7 +41,7 @@ describe('logger', () => {
     log.error('test message')
 
     expect(consoleLogSpy).toHaveBeenCalledWith(
-      `${chalk.gray('[nanogen]')} ${chalk.red('test message')}`,
+      `${pc.gray('[nanogen]')} ${pc.red('test message')}`,
     )
   })
 })

@@ -1,10 +1,10 @@
 import { log } from '@/libs/logger/logger'
-import chalk from 'chalk'
 import fse from 'fs-extra'
 import cp from 'node:child_process'
 import path from 'node:path'
 import util from 'node:util'
 import ora from 'ora'
+import pc from 'picocolors'
 
 const exec = util.promisify(cp.exec)
 
@@ -44,8 +44,8 @@ export const init = async () => {
 
   log.success(`Site initialized successfully!`)
   log.info(
-    chalk`Now you can run:
-  ${chalk.cyan('npm start')}      to start your new site, or
-  ${chalk.cyan('npm run build')}  to build it into the 'public' folder.`,
+    `Now you can run:
+  ${pc.cyan('npm start')}      to start your new site, or
+  ${pc.cyan('npm run build')}  to build it into the 'public' folder.`,
   )
 }
