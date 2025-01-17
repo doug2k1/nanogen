@@ -14,8 +14,8 @@ program
 program
   .command('init')
   .description('Initialize a new site')
-  .action(() => {
-    cliProcess({ command: 'init' })
+  .action(async () => {
+    await cliProcess({ command: 'init' })
   })
 
 program

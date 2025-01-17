@@ -1,6 +1,6 @@
 # TO DO
 
-- Check dependencies and eliminate or replace them with more modern ones.
+- Check dependencies and eliminate or replace them with more modern ones (todo: live-server)
 - Replace Travis with GitHub Actions
 - Replace AppVeyor with GitHub Actions (use matrix with Node versions)
 - Remove CodeClimate badges
@@ -11,4 +11,5 @@
 ## Nice to have
 
 - Eta template support
-- Integrate with build step to minify files
+- Integrate with build step to minify files (vite?)
+- Generate sitemap (add generateSitemap function to config)

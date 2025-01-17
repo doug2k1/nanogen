@@ -19,7 +19,7 @@ export const cliProcess = async ({ command, options = {} }: Props) => {
 
   switch (command) {
     case 'init':
-      init()
+      await init()
       break
     case 'start':
       serve(config, options)

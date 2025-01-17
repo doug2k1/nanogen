@@ -1,46 +1,30 @@
 import { log } from '@/libs/logger/logger'
 import fse from 'fs-extra'
+import { createSpinner } from 'nanospinner'
 import cp from 'node:child_process'
 import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 import util from 'node:util'
-import ora from 'ora'
 import pc from 'picocolors'
 
 const exec = util.promisify(cp.exec)
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 /**
  * Initialize a new Nanogen site from a predefined template.
  */
-export const init = async () => {
+export const init = async (templateDir = '../template') => {
   log.info('Initializing a new Nanogen site ...')
 
   // copy template files
-  fse.copySync(path.resolve(__dirname, '../../../template'), '.')
-  await exec('npm init -y')
+  fse.copySync(path.resolve(__dirname, templateDir), '.')
 
-  // add scripts to package.json
-  const packageJSON = await import(path.relative(__dirname, './package.json'))
+  // install dependencies
+  const spinner = createSpinner('Installing dependencies...').start()
 
-  fse.writeFileSync(
-    './package.json',
-    JSON.stringify(
-      {
-        ...packageJSON.default,
-        script: {
-          start: 'nanogen start',
-          build: 'nanogen build',
-        },
-      },
-      null,
-      2,
-    ),
-  )
-
-  // install nanogen
-  const spinner = ora('Installing dependencies...').start()
-
-  await exec('npm i -D nanogen --loglevel error')
-  spinner.succeed()
+  await exec('npm i --loglevel error')
+  spinner.success()
 
   log.success(`Site initialized successfully!`)
   log.info(

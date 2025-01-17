@@ -2,8 +2,12 @@ import { copyFolderToTemp } from '@/test/utils/copyFolderToTemp'
 import fse from 'fs-extra'
 import cp from 'node:child_process'
 import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { init } from './init'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 vi.mock('@/libs/logger/logger')
 vi.mock('node:child_process', () => ({
@@ -20,11 +24,6 @@ describe('init', () => {
 
   beforeEach(() => {
     tempDir = copyFolderToTemp(path.resolve(__dirname, '../../test/mock'))
-    // manually add empty package.json
-    fse.writeFileSync(
-      path.resolve(tempDir, './package.json'),
-      JSON.stringify({ scripts: {} }, null, 2),
-    )
     process.chdir(tempDir)
   })
 
@@ -34,11 +33,10 @@ describe('init', () => {
   })
 
   it('should initialize site', async () => {
-    await init()
+    await init('../../../template')
 
-    expect(cp.exec).toHaveBeenCalledWith('npm init -y', expect.any(Function))
     expect(cp.exec).toHaveBeenCalledWith(
-      'npm i -D nanogen --loglevel error',
+      'npm i --loglevel error',
       expect.any(Function),
     )
     expect(fse.existsSync('./site.config.js')).toBe(true)

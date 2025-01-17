@@ -1,0 +1,12 @@
+{
+  "name": "nanogen-site",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "nanogen start",
+    "build": "nanogen build"
+  },
+  "devDependencies": {
+    "nanogen": "../nanogen"
+  }
+}
