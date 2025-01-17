@@ -1,52 +1,49 @@
 #!/usr/bin/env node
-import meow from 'meow'
-import pc from 'picocolors'
+import { Command } from 'commander'
+import packageJSON from '../package.json'
 import { cliProcess } from './modules/cli/cli-process'
 
-const cli = meow(
-  `
-    ${pc.yellow('Initialize a new site:')}
+const program = new Command()
 
-      ${pc.cyan('$ nanogen init')}
+program
+  .name('nanogen')
+  .description('A minimalist static site generator')
+  .version(packageJSON.version, '-v, --version')
+  .usage('<command> [options]')
 
-    ${pc.yellow('Start the current site:')}
+program
+  .command('init')
+  .description('Initialize a new site')
+  .action(() => {
+    cliProcess({ command: 'init' })
+  })
 
-      ${pc.cyan('$ nanogen start [options]')}
+program
+  .command('start')
+  .description('Start the current site')
+  .option(
+    '-c, --config <file-path>',
+    'Path to the config file',
+    'site.config.js',
+  )
+  .option('-p, --port <port-number>', 'Port to use for local server', '3000')
+  .action((options) => {
+    cliProcess({
+      command: 'start',
+      options: { config: options.config, port: options.port },
+    })
+  })
 
-    ${pc.yellow('Build the current site:')}
+program
+  .command('build')
+  .description('Build the current site')
+  .option(
+    '-c, --config <file-path>',
+    'Path to the config file',
+    'site.config.js',
+  )
+  .action((options) => {
+    cliProcess({ command: 'build', options: { config: options.config } })
+  })
 
-      ${pc.cyan('$ nanogen build [options]')}
-
-    ${pc.underline(pc.yellow('Options'))}
-      ${pc.cyan('-c, --config <file-path>')}  Path to the config file (default: site.config.js)
-      ${pc.cyan('-p, --port <port-number>')}  Port to use for local server (default: 3000)
-      
-      ${pc.cyan('-h, --help')}                Display this help text
-      ${pc.cyan('-v, --version')}             Display Nanogen version
-  `,
-  {
-    importMeta: import.meta,
-    flags: {
-      config: {
-        type: 'string',
-        default: 'site.config.js',
-        shortFlag: 'c',
-      },
-      port: {
-        type: 'string',
-        default: '3000',
-        shortFlag: 'p',
-      },
-      help: {
-        type: 'boolean',
-        shortFlag: 'h',
-      },
-      version: {
-        type: 'boolean',
-        shortFlag: 'v',
-      },
-    },
-  },
-)
-
-cliProcess(cli.input, cli.flags)
+program.parse()

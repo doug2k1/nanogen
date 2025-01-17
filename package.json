@@ -48,6 +48,7 @@
   },
   "dependencies": {
     "chokidar": "^4.0.3",
+    "commander": "^13.0.0",
     "ejs": "^3.1.10",
     "front-matter": "^4.0.2",
     "fs-extra": "^11.3.0",
@@ -55,7 +56,6 @@
     "live-server": "^1.2.2",
     "lodash.debounce": "^4.0.8",
     "marked": "^15.0.6",
-    "meow": "^13.2.0",
     "ora": "^8.1.1",
     "picocolors": "^1.1.1"
   },

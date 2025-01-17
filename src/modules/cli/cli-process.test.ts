@@ -11,45 +11,36 @@ vi.mock('@/modules/serve/serve')
 vi.mock('@/libs/logger/logger')
 
 describe('cli', () => {
-  it('should do nothing if missing or invalid command', async () => {
-    await cliProcess()
-    await cliProcess(['foo'])
-
-    expect(init).not.toHaveBeenCalled()
-    expect(build).not.toHaveBeenCalled()
-    expect(serve).not.toHaveBeenCalled()
-  })
-
   it('should initialize a new site', async () => {
-    await cliProcess(['init'])
+    await cliProcess({ command: 'init' })
 
     expect(init).toHaveBeenCalled()
   })
 
   it('should start site with default options', async () => {
-    await cliProcess(['start'])
+    await cliProcess({ command: 'start' })
 
     expect(serve).toHaveBeenCalledWith({}, {})
   })
 
   it('should start site with custom options', async () => {
-    const flags = { config: 'src/test/mock/mock-config.js', port: '1111' }
+    const options = { config: 'src/test/mock/mock-config.js', port: '1111' }
 
-    await cliProcess(['start'], flags)
+    await cliProcess({ command: 'start', options })
 
-    expect(serve).toHaveBeenCalledWith(mockConfig, flags)
+    expect(serve).toHaveBeenCalledWith(mockConfig, options)
   })
 
   it('should build site with default options', async () => {
-    await cliProcess(['build'])
+    await cliProcess({ command: 'build' })
 
     expect(build).toHaveBeenCalledWith({})
   })
 
   it('should build site with custom options', async () => {
-    const flags = { config: 'src/test/mock/mock-config.js' }
+    const options = { config: 'src/test/mock/mock-config.js' }
 
-    await cliProcess(['build'], flags)
+    await cliProcess({ command: 'build', options })
 
     expect(build).toHaveBeenCalledWith(mockConfig)
   })

@@ -1,31 +1,33 @@
-import { log } from '@/libs/logger/logger'
 import { build } from '@/modules/build/build'
 import { init } from '@/modules/init/init'
-import { serve, ServeFlags } from '@/modules/serve/serve'
+import { serve } from '@/modules/serve/serve'
 import path from 'node:path'
 
-interface Flags extends ServeFlags {
-  config?: string
+interface Props {
+  command: 'init' | 'start' | 'build'
+  options?: {
+    config?: string
+    port?: string
+  }
 }
 
-export const cliProcess = async (input: string[] = [], flags: Flags = {}) => {
-  // command
-  const command = input.length > 0 ? input[0] : null
+export const cliProcess = async ({ command, options = {} }: Props) => {
+  // read config config
+  const config = options.config
+    ? (await import(path.resolve(options.config))).default
+    : {}
 
-  if (command === 'init') {
-    init()
-  } else {
-    // config
-    const config = flags.config
-      ? (await import(path.resolve(flags.config))).default
-      : {}
-
-    if (command === 'start') {
-      serve(config, flags)
-    } else if (command === 'build') {
+  switch (command) {
+    case 'init':
+      init()
+      break
+    case 'start':
+      serve(config, options)
+      break
+    case 'build':
       build(config)
-    } else {
-      log.error('Invalid command')
-    }
+      break
+    default:
+      break
   }
 }
