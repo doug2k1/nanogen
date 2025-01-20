@@ -14,7 +14,7 @@ interface Props {
 export const cliProcess = async ({ command, options = {} }: Props) => {
   // read config config
   const config = options.config
-    ? (await import(path.resolve(options.config))).default
+    ? (await import(`file://${path.resolve(options.config)}`)).default
     : {}
 
   switch (command) {
