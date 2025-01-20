@@ -18,7 +18,7 @@ Minimalist static site generator, powered by [Node.js](https://nodejs.org/en/)
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/en/) installed (version 8 or above)
+- [Node.js](https://nodejs.org/en/) installed (version 20 or above)
 
 ### Install
 
