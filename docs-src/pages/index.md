@@ -1,7 +1,9 @@
 # Nanogen
 
 [![npm](https://img.shields.io/npm/v/nanogen.svg)](https://www.npmjs.com/package/nanogen)
-[![Build Status](https://github.com/doug2k1/nanogen/actions/workflows/ci.yml/badge.svg?event=push)]
+[![Build Status](https://travis-ci.org/doug2k1/nanogen.svg?branch=cli)](https://travis-ci.org/doug2k1/nanogen)
+[![Maintainability](https://api.codeclimate.com/v1/badges/ab96ad49962fca4a6f2e/maintainability)](https://codeclimate.com/github/doug2k1/nanogen/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/ab96ad49962fca4a6f2e/test_coverage)](https://codeclimate.com/github/doug2k1/nanogen/test_coverage)
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/doug2k1/nanogen-template)
 
@@ -18,7 +20,7 @@ Minimalist static site generator, powered by [Node.js](https://nodejs.org/en/)
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/en/) installed (version 20 or above)
+- [Node.js](https://nodejs.org/en/) installed (version 8 or above)
 
 ### Install
 
@@ -62,11 +64,11 @@ npm start
 
 There is already a default layout inside the `layouts` folder, but you may add more.
 
-Read more about [Layouts](https://doug2k1.github.io/nanogen/docs/#layouts).
+Read more about [Layouts](docs/#layouts).
 
 Inside the `pages` folder is where you put ejs, md or html files that will generate the pages of the final site. Any file name and folder structure used here will be transposed to the resulting site (without the `pages` part).
 
-Read more about [Pages](https://doug2k1.github.io/nanogen/docs/#pages).
+Read more about [Pages](docs/#pages).
 
 ## Available commands and options
 
@@ -95,14 +97,4 @@ You may run `nanogen -h` to see the available commands and options:
 
 ## Docs
 
-[Read the full documentation](https://doug2k1.github.io/nanogen)
-
-## Authors
-
-- **Douglas Matoso** - _Initial work_ - [doug2k1](https://github.com/doug2k1)
-
-See also the list of [contributors](https://github.com/doug2k1/nanogen/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
+[Read the full documentation](docs/)

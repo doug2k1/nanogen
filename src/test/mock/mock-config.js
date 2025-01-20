@@ -4,6 +4,6 @@ export default {
     outputPath: './public',
   },
   site: {
-    title: 'Nanogen site',
+    title: 'test-site',
   },
 }
