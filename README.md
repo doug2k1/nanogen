@@ -1,7 +1,7 @@
 # Nanogen
 
 [![npm](https://img.shields.io/npm/v/nanogen.svg)](https://www.npmjs.com/package/nanogen)
-[![Build Status](https://github.com/doug2k1/nanogen/actions/workflows/ci.yml/badge.svg?event=push)]
+![Build Status](https://github.com/doug2k1/nanogen/actions/workflows/ci.yml/badge.svg?event=push)
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/doug2k1/nanogen-template)
 
