@@ -21,7 +21,7 @@ jobs:
           node-version-file: '.nvmrc'
 
       - name: Install dependencies
-        run: npm i
+        run: npm ci
 
       - name: Run prettier:check
         run: npm run prettier:check

@@ -7,6 +7,6 @@
     "build": "nanogen build"
   },
   "devDependencies": {
-    "nanogen": "../nanogen"
+    "nanogen": "^0.4.2"
   }
 }
