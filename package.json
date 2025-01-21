@@ -49,11 +49,12 @@
     "front-matter": "^4.0.2",
     "fs-extra": "^11.3.0",
     "glob": "^11.0.1",
-    "live-server": "^1.2.2",
     "lodash.debounce": "^4.0.8",
     "marked": "^15.0.6",
     "nanospinner": "^1.2.2",
-    "picocolors": "^1.1.1"
+    "picocolors": "^1.1.1",
+    "sirv": "^3.0.0",
+    "ws": "^8.18.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",
@@ -65,6 +66,7 @@
     "@types/lodash.debounce": "^4.0.9",
     "@types/meow": "^6.0.0",
     "@types/node": "^22.10.6",
+    "@types/ws": "^8.5.13",
     "@vitest/coverage-v8": "^2.1.8",
     "cross-env": "^7.0.3",
     "eslint": "^9.18.0",
