@@ -37,7 +37,7 @@
     "start": "tsx src/cli.ts",
     "start:docs": "node dist/cli start",
     "build:docs": "cross-env NODE_ENV=production node dist/cli build",
-    "update-template": "tsx scripts/update-template-version.ts"
+    "version": "tsx scripts/update-template-version.ts"
   },
   "engines": {
     "node": ">=20.0.0"

@@ -38,7 +38,6 @@ jobs:
       - name: Update version
         run: |
           npm version ${{ github.event.inputs.version }}
-          npm run update-template
           git push --follow-tags
 
       - name: Create GitHub Release
