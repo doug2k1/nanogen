@@ -48,6 +48,9 @@ jobs:
           VERSION=$(node -p "require('./package.json').version")
           gh release create v$VERSION --generate-notes
 
+      - name: Build
+        run: npm run build
+
       - name: Publish to NPM
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
