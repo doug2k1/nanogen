@@ -20,7 +20,10 @@ const WS_CLIENT_SCRIPT = `
 /**
  * Build the site
  */
-export const build = (options = {}) => {
+export const build = (
+  options = {},
+  mode = process.env.NODE_ENV || 'production',
+) => {
   log.info('Building site...')
   const startTime = hrtime.bigint()
   const { srcPath, outputPath, cleanUrls, site } = parseOptions(options)
@@ -37,7 +40,7 @@ export const build = (options = {}) => {
   const files = glob.sync('**/*.@(md|ejs|html)', { cwd: `${srcPath}/pages` })
 
   files.forEach((file) =>
-    _buildPage(file, { srcPath, outputPath, cleanUrls, site }),
+    _buildPage(file, { srcPath, outputPath, cleanUrls, site }, mode),
   )
 
   // display build time
@@ -96,6 +99,7 @@ interface TemplateConfig {
 const _buildPage = (
   file: string,
   { srcPath, outputPath, cleanUrls, site }: PageConfig,
+  mode: string,
 ): void => {
   const fileData = path.parse(file)
   let destPath = path.join(outputPath, fileData.dir)
@@ -148,7 +152,7 @@ const _buildPage = (
     }),
   )
 
-  if (process.env.NODE_ENV !== 'production') {
+  if (mode !== 'production') {
     // Inject WebSocket client script for live reload
     completePage = completePage.includes('</body>')
       ? completePage.replace('</body>', WS_CLIENT_SCRIPT)
