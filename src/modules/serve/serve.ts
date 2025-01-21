@@ -18,11 +18,17 @@ export const serve = (options: Options, flags: ServeFlags): void => {
   const { srcPath, outputPath } = parseOptions(options)
 
   build(options)
-  server.serve({ path: outputPath, port: Number(flags.port) })
+
+  const { reload } = server.serve({
+    path: outputPath,
+    port: Number(flags.port),
+  })
+
   chokidar.watch(srcPath, { ignoreInitial: true }).on(
     'all',
     debounce(() => {
       build(options)
+      reload()
       log.info('Waiting for changes...')
     }, 500),
   )

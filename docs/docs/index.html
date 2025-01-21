@@ -37,7 +37,7 @@
 <h2>Configuration</h2>
 <p>You can change the source and destination folders with a configuration file. By default, that file should be named <code>site.config.js</code>.</p>
 <p>Example config file:</p>
-<pre><code class="language-javascript">module.exports = {
+<pre><code class="language-javascript">export default {
   build: {
     srcPath: &#39;./src&#39;,
     outputPath: &#39;./public&#39;,
@@ -49,7 +49,7 @@
 </code></pre>
 <h3>Site metadata</h3>
 <p>The configuration file can have a <code>site</code> entry, with additional data to be used in your pages:</p>
-<pre><code class="language-javascript">module.exports = {
+<pre><code class="language-javascript">export default {
   build: {
     srcPath: &#39;./src&#39;,
     outputPath: &#39;./public&#39;,
@@ -82,7 +82,7 @@ tags:
 ---
 Contents of the page goes here...
 </code></pre>
-<p>Make sure this data is at the top of the page, separated by <code>---</code>. This block of page data is usually refered as <strong>front matter</strong>.</p>
+<p>Make sure this data is at the top of the page, separated by <code>---</code>. This block of page data is usually referred as <strong>front matter</strong>.</p>
 <p>This data can also be used inside the layout, with the <code>page</code> prefix:</p>
 <pre><code class="language-html">&lt;h1&gt;&lt;%= page.title %&gt;&lt;/h1&gt;
 &lt;p&gt;By &lt;%= page.author %&gt;&lt;/p&gt;

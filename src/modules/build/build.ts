@@ -8,6 +8,15 @@ import { marked } from 'marked'
 import path from 'node:path'
 import { hrtime } from 'node:process'
 
+const WS_CLIENT_SCRIPT = `
+<script>
+  (function() {
+    const ws = new WebSocket(\`ws://\${location.host}\`);
+    ws.onmessage = () => location.reload();
+  })();
+</script>
+</body>`
+
 /**
  * Build the site
  */
@@ -131,13 +140,20 @@ const _buildPage = (
     srcPath,
   })
 
-  const completePage = ejs.render(
+  let completePage = ejs.render(
     layout.data,
     Object.assign({}, templateConfig, {
       body: pageContent,
       filename: `${srcPath}/layout-${layoutName}`,
     }),
   )
+
+  if (process.env.NODE_ENV !== 'production') {
+    // Inject WebSocket client script for live reload
+    completePage = completePage.includes('</body>')
+      ? completePage.replace('</body>', WS_CLIENT_SCRIPT)
+      : completePage + WS_CLIENT_SCRIPT
+  }
 
   // save the html file
   if (cleanUrls) {

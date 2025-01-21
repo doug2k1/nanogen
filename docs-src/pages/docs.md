@@ -33,7 +33,7 @@ You can change the source and destination folders with a configuration file. By 
 Example config file:
 
 ```javascript
-module.exports = {
+export default {
   build: {
     srcPath: './src',
     outputPath: './public',
@@ -52,7 +52,7 @@ nanogen start -c my-config.js
 The configuration file can have a `site` entry, with additional data to be used in your pages:
 
 ```javascript
-module.exports = {
+export default {
   build: {
     srcPath: './src',
     outputPath: './public',
@@ -93,7 +93,7 @@ tags:
 Contents of the page goes here...
 ```
 
-Make sure this data is at the top of the page, separated by `---`. This block of page data is usually refered as **front matter**.
+Make sure this data is at the top of the page, separated by `---`. This block of page data is usually referred as **front matter**.
 
 This data can also be used inside the layout, with the `page` prefix:
 
