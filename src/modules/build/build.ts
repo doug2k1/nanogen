@@ -7,6 +7,8 @@ import { glob } from 'glob'
 import { marked } from 'marked'
 import path from 'node:path'
 import { hrtime } from 'node:process'
+import prettier from 'prettier'
+import prettierConfig from '~/.prettierrc.json'
 
 const WS_CLIENT_SCRIPT = `
 <script>
@@ -20,10 +22,7 @@ const WS_CLIENT_SCRIPT = `
 /**
  * Build the site
  */
-export const build = (
-  options = {},
-  mode = process.env.NODE_ENV || 'production',
-) => {
+export const build = (options = {}, mode = process.env.NODE_ENV || 'production') => {
   log.info('Building site...')
   const startTime = hrtime.bigint()
   const { srcPath, outputPath, cleanUrls, site } = parseOptions(options)
@@ -32,21 +31,21 @@ export const build = (
   fse.emptyDirSync(outputPath)
 
   // copy assets folder
-  if (fse.existsSync(`${srcPath}/assets`)) {
-    fse.copySync(`${srcPath}/assets`, outputPath)
+  if (fse.existsSync(path.join(srcPath, 'assets'))) {
+    fse.copySync(path.join(srcPath, 'assets'), outputPath)
   }
 
   // read pages
-  const files = glob.sync('**/*.@(md|ejs|html)', { cwd: `${srcPath}/pages` })
+  const files = glob.sync('**/*.@(md|ejs|html)', { cwd: path.join(srcPath, 'pages') })
 
-  files.forEach((file) =>
-    _buildPage(file, { srcPath, outputPath, cleanUrls, site }, mode),
-  )
+  files.forEach((file) => {
+    _buildPage(file, { srcPath, outputPath, cleanUrls, site }, mode)
+  })
 
   // display build time
-  const timeDiff = process.hrtime.bigint() - startTime
+  const timeDiff = hrtime.bigint() - startTime
   const duration = Number(timeDiff) / 1e6
-  log.success(`Site built successfully in ${duration} ms`)
+  log.success(`Site built successfully in ${duration.toFixed(2)} ms`)
 }
 
 /**
@@ -61,14 +60,25 @@ interface LayoutResult {
   data: string
 }
 
-const _loadLayout = (
-  layout: string,
-  { srcPath }: LayoutConfig,
-): LayoutResult => {
-  const file = `${srcPath}/layouts/${layout}.ejs`
+const _loadLayout = (layout: string, { srcPath }: LayoutConfig): LayoutResult => {
+  const file = path.join(srcPath, 'layouts', `${layout}.ejs`)
   const data = fse.readFileSync(file, 'utf-8')
-
   return { file, data }
+}
+
+/**
+ * Format HTML content with Prettier
+ */
+const _formatHtml = async (html: string): Promise<string> => {
+  try {
+    return await prettier.format(html, {
+      ...prettierConfig,
+      parser: 'html',
+    })
+  } catch (error) {
+    log.error(`Error formatting HTML with Prettier: ${error}`)
+    return html // Return original if formatting fails
+  }
 }
 
 /**
@@ -113,9 +123,9 @@ const _buildPage = (
   fse.mkdirsSync(destPath)
 
   // read page file
-  const data = fse.readFileSync(`${srcPath}/pages/${file}`, 'utf-8')
+  const data = fse.readFileSync(path.join(srcPath, 'pages', file), 'utf-8')
 
-  const pageData: PageData = frontMatter(data)
+  const pageData: PageData = frontMatter<PageAttributes>(data)
   const templateConfig: TemplateConfig = {
     site,
     page: pageData.attributes,
@@ -131,7 +141,7 @@ const _buildPage = (
       break
     case '.ejs':
       pageContent = ejs.render(pageData.body, templateConfig, {
-        filename: `${srcPath}/page-${pageSlug}`,
+        filename: path.join(srcPath, `page-${pageSlug}`),
       })
       break
     default:
@@ -140,16 +150,12 @@ const _buildPage = (
 
   // render layout with page contents
   const layoutName = pageData.attributes.layout || 'default'
-  const layout = _loadLayout(layoutName, {
-    srcPath,
-  })
+  const layout = _loadLayout(layoutName, { srcPath })
 
   let completePage = ejs.render(
     layout.data,
-    Object.assign({}, templateConfig, {
-      body: pageContent,
-      filename: `${srcPath}/layout-${layoutName}`,
-    }),
+    { ...templateConfig, body: pageContent },
+    { filename: path.join(srcPath, `layout-${layoutName}`) },
   )
 
   if (mode !== 'production') {
@@ -159,10 +165,15 @@ const _buildPage = (
       : completePage + WS_CLIENT_SCRIPT
   }
 
-  // save the html file
-  if (cleanUrls) {
-    fse.writeFileSync(`${destPath}/index.html`, completePage)
-  } else {
-    fse.writeFileSync(`${destPath}/${fileData.name}.html`, completePage)
-  }
+  // format and save the html file
+  _formatHtml(completePage)
+    .then((finalPage) => {
+      const outputFile = cleanUrls
+        ? path.join(destPath, 'index.html')
+        : path.join(destPath, `${fileData.name}.html`)
+      fse.writeFileSync(outputFile, finalPage)
+    })
+    .catch((error) => {
+      log.error(`Failed to format and write page "${file}": ${error}`)
+    })
 }

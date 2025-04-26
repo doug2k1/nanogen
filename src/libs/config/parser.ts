@@ -22,14 +22,8 @@ export interface Options {
   site?: SiteOptions
 }
 
-export const parseOptions = (
-  options: Options,
-): BuildOptions & { site: SiteOptions } => {
-  const { srcPath, outputPath, cleanUrls } = Object.assign(
-    {},
-    buildDefaults,
-    options.build,
-  )
+export const parseOptions = (options: Options): BuildOptions & { site: SiteOptions } => {
+  const { srcPath, outputPath, cleanUrls } = Object.assign({}, buildDefaults, options.build)
   const site = options.site || {}
 
   return { srcPath, outputPath, cleanUrls, site }

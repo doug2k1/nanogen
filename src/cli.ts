@@ -21,11 +21,7 @@ program
 program
   .command('start')
   .description('Start the current site')
-  .option(
-    '-c, --config <file-path>',
-    'Path to the config file',
-    'site.config.js',
-  )
+  .option('-c, --config <file-path>', 'Path to the config file', 'site.config.js')
   .option('-p, --port <port-number>', 'Port to use for local server', '3000')
   .action((options) => {
     cliProcess({
@@ -37,11 +33,7 @@ program
 program
   .command('build')
   .description('Build the current site')
-  .option(
-    '-c, --config <file-path>',
-    'Path to the config file',
-    'site.config.js',
-  )
+  .option('-c, --config <file-path>', 'Path to the config file', 'site.config.js')
   .action((options) => {
     cliProcess({ command: 'build', options: { config: options.config } })
   })

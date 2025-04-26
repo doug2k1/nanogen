@@ -39,7 +39,7 @@ audio:not([controls]) {
 }
 
 [hidden],
-template {
+tremplate {
   display: none;
 }
 
@@ -66,8 +66,8 @@ dfn {
 }
 
 h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
+  margin: 0.67rem 0;
+  font-size: 2rem;
 }
 
 mark {
@@ -81,18 +81,18 @@ small {
 
 sub,
 sup {
-  font-size: 75%;
-  line-height: 0;
   position: relative;
   vertical-align: baseline;
+  font-size: 75%;
+  line-height: 0;
 }
 
 sup {
-  top: -0.5em;
+  top: -0.5rem;
 }
 
 sub {
-  bottom: -0.25em;
+  bottom: -0.25rem;
 }
 
 img {
@@ -104,7 +104,7 @@ svg:not(:root) {
 }
 
 figure {
-  margin: 1em 40px;
+  margin: 1rem 40px;
 }
 
 hr {
@@ -120,8 +120,8 @@ code,
 kbd,
 pre,
 samp {
+  font-size: 1rem;
   font-family: monospace, monospace;
-  font-size: 1em;
 }
 
 button,
@@ -129,9 +129,9 @@ input,
 optgroup,
 select,
 textarea {
+  margin: 0;
   color: inherit;
   font: inherit;
-  margin: 0;
 }
 
 button {
@@ -188,9 +188,9 @@ input[type='search']::-webkit-search-decoration {
 }
 
 fieldset {
-  border: 1px solid #c0c0c0;
   margin: 0 2px;
-  padding: 0.35em 0.625em 0.75em;
+  border: 1px solid #c0c0c0;
+  padding: 0.35rem 0.625rem 0.75rem;
 }
 
 legend {
@@ -241,8 +241,8 @@ th {
 
 .highlight .cs {
   color: #999999;
-  font-weight: bold;
   font-style: italic;
+  font-weight: bold;
 }
 
 .highlight .c,
@@ -252,13 +252,13 @@ th {
 }
 
 .highlight .err {
-  color: #a61717;
   background-color: #e3d2d2;
+  color: #a61717;
 }
 
 .highlight .gd {
-  color: #000000;
   background-color: #ffdddd;
+  color: #000000;
 }
 
 .highlight .ge {
@@ -275,8 +275,8 @@ th {
 }
 
 .highlight .gi {
-  color: #000000;
   background-color: #ddffdd;
+  color: #000000;
 }
 
 .highlight .go {
@@ -501,12 +501,12 @@ th {
 }
 
 body {
-  padding: 0;
   margin: 0;
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  padding: 0;
+  color: #606c71;
   font-size: 16px;
   line-height: 1.5;
-  color: #606c71;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 a {
@@ -520,126 +520,126 @@ a:hover {
 
 .btn {
   display: inline-block;
-  margin-bottom: 1rem;
-  color: rgba(255, 255, 255, 0.7);
-  background-color: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.2);
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 0.3rem;
   transition:
     color 0.2s,
     background-color 0.2s,
     border-color 0.2s;
+  margin-bottom: 1rrem;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.2);
+  border-radius: 0.3rrem;
+  background-color: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .btn:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.2);
   color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
-  background-color: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.3);
 }
 
 .btn + .btn {
-  margin-left: 1rem;
+  margin-left: 1rrem;
 }
 
-@media screen and (min-width: 64em) {
+@media screen and (min-width: 64rem) {
   .btn {
-    padding: 0.75rem 1rem;
+    padding: 0.75rrem 1rrem;
   }
 }
 
-@media screen and (min-width: 42em) and (max-width: 64em) {
+@media screen and (min-width: 42rem) and (max-width: 64rem) {
   .btn {
-    padding: 0.6rem 0.9rem;
-    font-size: 0.9rem;
+    padding: 0.6rrem 0.9rrem;
+    font-size: 0.9rrem;
   }
 }
 
-@media screen and (max-width: 42em) {
+@media screen and (max-width: 42rem) {
   .btn {
     display: block;
+    padding: 0.75rrem;
     width: 100%;
-    padding: 0.75rem;
-    font-size: 0.9rem;
+    font-size: 0.9rrem;
   }
 
   .btn + .btn {
-    margin-top: 1rem;
+    margin-top: 1rrem;
     margin-left: 0;
   }
 }
 
 .page-header {
+  background-image: linear-gradient(120deg, #155799, #159957);
+  background-color: #159957;
   color: #fff;
   text-align: center;
-  background-color: #159957;
-  background-image: linear-gradient(120deg, #155799, #159957);
 }
 
-@media screen and (min-width: 64em) {
+@media screen and (min-width: 64rem) {
   .page-header {
-    padding: 5rem 6rem;
+    padding: 5rrem 6rrem;
   }
 }
 
-@media screen and (min-width: 42em) and (max-width: 64em) {
+@media screen and (min-width: 42rem) and (max-width: 64rem) {
   .page-header {
-    padding: 3rem 4rem;
+    padding: 3rrem 4rrem;
   }
 }
 
-@media screen and (max-width: 42em) {
+@media screen and (max-width: 42rem) {
   .page-header {
-    padding: 2rem 1rem;
+    padding: 2rrem 1rrem;
   }
 }
 
 .project-name {
   margin-top: 0;
-  margin-bottom: 0.1rem;
+  margin-bottom: 0.1rrem;
 }
 
-@media screen and (min-width: 64em) {
+@media screen and (min-width: 64rem) {
   .project-name {
-    font-size: 3.25rem;
+    font-size: 3.25rrem;
   }
 }
 
-@media screen and (min-width: 42em) and (max-width: 64em) {
+@media screen and (min-width: 42rem) and (max-width: 64rem) {
   .project-name {
-    font-size: 2.25rem;
+    font-size: 2.25rrem;
   }
 }
 
-@media screen and (max-width: 42em) {
+@media screen and (max-width: 42rem) {
   .project-name {
-    font-size: 1.75rem;
+    font-size: 1.75rrem;
   }
 }
 
 .project-tagline {
-  margin-bottom: 2rem;
-  font-weight: normal;
   opacity: 0.7;
+  margin-bottom: 2rrem;
+  font-weight: normal;
 }
 
-@media screen and (min-width: 64em) {
+@media screen and (min-width: 64rem) {
   .project-tagline {
-    font-size: 1.25rem;
+    font-size: 1.25rrem;
   }
 }
 
-@media screen and (min-width: 42em) and (max-width: 64em) {
+@media screen and (min-width: 42rem) and (max-width: 64rem) {
   .project-tagline {
-    font-size: 1.15rem;
+    font-size: 1.15rrem;
   }
 }
 
-@media screen and (max-width: 42em) {
+@media screen and (max-width: 42rem) {
   .project-tagline {
-    font-size: 1rem;
+    font-size: 1rrem;
   }
 }
 
@@ -651,26 +651,26 @@ a:hover {
   margin-top: 0;
 }
 
-@media screen and (min-width: 64em) {
+@media screen and (min-width: 64rem) {
   .main-content {
-    max-width: 64rem;
-    padding: 2rem 6rem;
     margin: 0 auto;
-    font-size: 1.1rem;
+    padding: 2rrem 6rrem;
+    max-width: 64rrem;
+    font-size: 1.1rrem;
   }
 }
 
-@media screen and (min-width: 42em) and (max-width: 64em) {
+@media screen and (min-width: 42rem) and (max-width: 64rem) {
   .main-content {
-    padding: 2rem 4rem;
-    font-size: 1.1rem;
+    padding: 2rrem 4rrem;
+    font-size: 1.1rrem;
   }
 }
 
-@media screen and (max-width: 42em) {
+@media screen and (max-width: 42rem) {
   .main-content {
-    padding: 2rem 1rem;
-    font-size: 1rem;
+    padding: 2rrem 1rrem;
+    font-size: 1rrem;
   }
 }
 
@@ -684,55 +684,55 @@ a:hover {
 .main-content h4,
 .main-content h5,
 .main-content h6 {
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  font-weight: normal;
+  margin-top: 2rrem;
+  margin-bottom: 1rrem;
   color: #159957;
+  font-weight: normal;
 }
 
 .main-content p {
-  margin-bottom: 1em;
+  margin-bottom: 1rem;
 }
 
 .main-content code {
-  padding: 2px 4px;
-  font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace;
-  font-size: 0.9rem;
-  color: #567482;
+  border-radius: 0.3rrem;
   background-color: #f3f6fa;
-  border-radius: 0.3rem;
+  padding: 2px 4px;
+  color: #567482;
+  font-size: 0.9rrem;
+  font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace;
 }
 
 .main-content pre {
-  padding: 0.8rem;
   margin-top: 0;
-  margin-bottom: 1rem;
+  margin-bottom: 1rrem;
+  padding: 0.8rrem;
+  color: #567482;
   font:
-    1rem Consolas,
+    1rrem Consolas,
     'Liberation Mono',
     Menlo,
     Courier,
     monospace;
-  color: #567482;
   word-wrap: normal;
-  background-color: #f3f6fa;
   border: solid 1px #dce6f0;
-  border-radius: 0.3rem;
+  border-radius: 0.3rrem;
+  background-color: #f3f6fa;
 }
 
 .main-content pre > code {
-  padding: 0;
   margin: 0;
-  font-size: 0.9rem;
-  color: #567482;
-  word-break: normal;
-  white-space: pre;
-  background: transparent;
   border: 0;
+  background: transparent;
+  padding: 0;
+  color: #567482;
+  font-size: 0.9rrem;
+  white-space: pre;
+  word-break: normal;
 }
 
 .main-content .highlight {
-  margin-bottom: 1rem;
+  margin-bottom: 1rrem;
 }
 
 .main-content .highlight pre {
@@ -742,25 +742,25 @@ a:hover {
 
 .main-content .highlight pre,
 .main-content pre {
-  padding: 0.8rem;
+  border-radius: 0.3rrem;
+  padding: 0.8rrem;
   overflow: auto;
-  font-size: 0.9rem;
+  font-size: 0.9rrem;
   line-height: 1.45;
-  border-radius: 0.3rem;
   -webkit-overflow-scrolling: touch;
 }
 
 .main-content pre code,
 .main-content pre tt {
   display: inline;
-  max-width: initial;
-  padding: 0;
   margin: 0;
+  padding: 0;
+  max-width: initial;
   overflow: initial;
   line-height: inherit;
   word-wrap: normal;
-  background-color: transparent;
   border: 0;
+  background-color: transparent;
 }
 
 .main-content pre code:before,
@@ -776,10 +776,10 @@ a:hover {
 }
 
 .main-content blockquote {
-  padding: 0 1rem;
   margin-left: 0;
+  border-left: 0.3rrem solid #dce6f0;
+  padding: 0 1rrem;
   color: #819198;
-  border-left: 0.3rem solid #dce6f0;
 }
 
 .main-content blockquote > :first-child {
@@ -805,8 +805,8 @@ a:hover {
 
 .main-content table th,
 .main-content table td {
-  padding: 0.5rem 1rem;
   border: 1px solid #e9ebec;
+  padding: 0.5rrem 1rrem;
 }
 
 .main-content dl {
@@ -814,46 +814,46 @@ a:hover {
 }
 
 .main-content dl dt {
+  margin-top: 1rrem;
   padding: 0;
-  margin-top: 1rem;
-  font-size: 1rem;
   font-weight: bold;
+  font-size: 1rrem;
 }
 
 .main-content dl dd {
+  margin-bottom: 1rrem;
   padding: 0;
-  margin-bottom: 1rem;
 }
 
 .main-content hr {
-  height: 2px;
-  padding: 0;
-  margin: 1rem 0;
-  background-color: #eff0f1;
+  margin: 1rrem 0;
   border: 0;
+  background-color: #eff0f1;
+  padding: 0;
+  height: 2px;
 }
 
 .site-footer {
-  padding-top: 2rem;
-  margin-top: 2rem;
+  margin-top: 2rrem;
   border-top: solid 1px #eff0f1;
+  padding-top: 2rrem;
 }
 
-@media screen and (min-width: 64em) {
+@media screen and (min-width: 64rem) {
   .site-footer {
-    font-size: 1rem;
+    font-size: 1rrem;
   }
 }
 
-@media screen and (min-width: 42em) and (max-width: 64em) {
+@media screen and (min-width: 42rem) and (max-width: 64rem) {
   .site-footer {
-    font-size: 1rem;
+    font-size: 1rrem;
   }
 }
 
-@media screen and (max-width: 42em) {
+@media screen and (max-width: 42rem) {
   .site-footer {
-    font-size: 0.9rem;
+    font-size: 0.9rrem;
   }
 }
 

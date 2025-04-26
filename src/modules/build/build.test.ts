@@ -34,21 +34,14 @@ describe('build', () => {
   it('should copy assets folder', () => {
     build(mockConfig)
 
-    expect(fse.existsSync(`${mockConfig.build.outputPath}/asset.txt`)).toBe(
-      true,
-    )
-    expect(
-      fse.existsSync(`${mockConfig.build.outputPath}/sub/another.txt`),
-    ).toBe(true)
+    expect(fse.existsSync(`${mockConfig.build.outputPath}/asset.txt`)).toBe(true)
+    expect(fse.existsSync(`${mockConfig.build.outputPath}/sub/another.txt`)).toBe(true)
   })
 
   it('should use the default layout', () => {
     build(mockConfig)
 
-    const page = fse.readFileSync(
-      `${mockConfig.build.outputPath}/md1/index.html`,
-      'utf-8',
-    )
+    const page = fse.readFileSync(`${mockConfig.build.outputPath}/md1/index.html`, 'utf-8')
     expect(page).to.have.string('default-layout-start')
     expect(page).to.have.string('default-layout-end')
   })
@@ -56,10 +49,7 @@ describe('build', () => {
   it('should use custom layout', () => {
     build(mockConfig)
 
-    const page = fse.readFileSync(
-      `${mockConfig.build.outputPath}/custom/index.html`,
-      'utf-8',
-    )
+    const page = fse.readFileSync(`${mockConfig.build.outputPath}/custom/index.html`, 'utf-8')
     expect(page).to.have.string('custom-layout-start')
     expect(page).to.have.string('custom-layout-end')
   })
@@ -67,62 +57,38 @@ describe('build', () => {
   it('should generate pages from markdown', () => {
     build(mockConfig)
 
-    const page1 = fse.readFileSync(
-      `${mockConfig.build.outputPath}/md1/index.html`,
-      'utf-8',
-    )
+    const page1 = fse.readFileSync(`${mockConfig.build.outputPath}/md1/index.html`, 'utf-8')
     expect(page1).to.have.string('<p>markdown-page-1</p>')
 
-    const page2 = fse.readFileSync(
-      `${mockConfig.build.outputPath}/md/md2/index.html`,
-      'utf-8',
-    )
+    const page2 = fse.readFileSync(`${mockConfig.build.outputPath}/md/md2/index.html`, 'utf-8')
     expect(page2).to.have.string('<p>markdown-page-2</p>')
   })
 
   it('should generate pages from ejs', () => {
     build(mockConfig)
 
-    const page1 = fse.readFileSync(
-      `${mockConfig.build.outputPath}/ejs1/index.html`,
-      'utf-8',
-    )
+    const page1 = fse.readFileSync(`${mockConfig.build.outputPath}/ejs1/index.html`, 'utf-8')
     expect(page1).to.have.string('<p>ejs-1</p>')
 
-    const page2 = fse.readFileSync(
-      `${mockConfig.build.outputPath}/ejs/ejs2/index.html`,
-      'utf-8',
-    )
+    const page2 = fse.readFileSync(`${mockConfig.build.outputPath}/ejs/ejs2/index.html`, 'utf-8')
     expect(page2).to.have.string('<p>ejs-2</p>')
   })
 
   it('should generate pages from html', () => {
     build(mockConfig)
 
-    const page1 = fse.readFileSync(
-      `${mockConfig.build.outputPath}/html1/index.html`,
-      'utf-8',
-    )
+    const page1 = fse.readFileSync(`${mockConfig.build.outputPath}/html1/index.html`, 'utf-8')
     expect(page1).to.have.string('<p>html-1</p>')
 
-    const page2 = fse.readFileSync(
-      `${mockConfig.build.outputPath}/html/html2/index.html`,
-      'utf-8',
-    )
+    const page2 = fse.readFileSync(`${mockConfig.build.outputPath}/html/html2/index.html`, 'utf-8')
     expect(page2).to.have.string('<p>html-2</p>')
   })
 
   it('should not generate extra directory if filename is index', () => {
     build(mockConfig)
 
-    expect(
-      fse.existsSync(
-        `${mockConfig.build.outputPath}/with-index/index/index.html`,
-      ),
-    ).to.be.false
-    expect(
-      fse.existsSync(`${mockConfig.build.outputPath}/with-index/index.html`),
-    ).to.be.true
+    expect(fse.existsSync(`${mockConfig.build.outputPath}/with-index/index/index.html`)).to.be.false
+    expect(fse.existsSync(`${mockConfig.build.outputPath}/with-index/index.html`)).to.be.true
   })
 
   it('should not generate extra directory if cleanUrls option is false', () => {
@@ -130,10 +96,8 @@ describe('build', () => {
     config.build = Object.assign({}, config.build, { cleanUrls: false })
     build(config)
 
-    expect(fse.existsSync(`${mockConfig.build.outputPath}/html1/index.html`)).to
-      .be.false
-    expect(fse.existsSync(`${mockConfig.build.outputPath}/html1.html`)).to.be
-      .true
+    expect(fse.existsSync(`${mockConfig.build.outputPath}/html1/index.html`)).to.be.false
+    expect(fse.existsSync(`${mockConfig.build.outputPath}/html1.html`)).to.be.true
   })
 
   it('should inject site config', () => {
@@ -167,26 +131,17 @@ describe('build', () => {
   it('should include partial on layout', () => {
     build(mockConfig)
 
-    const page1 = fse.readFileSync(
-      `${mockConfig.build.outputPath}/ejs1/index.html`,
-      'utf-8',
-    )
+    const page1 = fse.readFileSync(`${mockConfig.build.outputPath}/ejs1/index.html`, 'utf-8')
     expect(page1).to.have.string('<p>test-partial-from-layout</p>')
   })
 
   it('should include partial on pages', () => {
     build(mockConfig)
 
-    const page1 = fse.readFileSync(
-      `${mockConfig.build.outputPath}/ejs1/index.html`,
-      'utf-8',
-    )
+    const page1 = fse.readFileSync(`${mockConfig.build.outputPath}/ejs1/index.html`, 'utf-8')
     expect(page1).to.have.string('<p>test-partial-from-page-ejs1</p>')
 
-    const page2 = fse.readFileSync(
-      `${mockConfig.build.outputPath}/ejs/ejs2/index.html`,
-      'utf-8',
-    )
+    const page2 = fse.readFileSync(`${mockConfig.build.outputPath}/ejs/ejs2/index.html`, 'utf-8')
     expect(page2).to.have.string('<p>test-partial-from-page-ejs2</p>')
   })
 })

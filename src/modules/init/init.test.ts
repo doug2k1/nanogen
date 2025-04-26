@@ -12,9 +12,7 @@ const __dirname = path.dirname(__filename)
 vi.mock('@/libs/logger/logger')
 vi.mock('node:child_process', () => ({
   default: {
-    exec: vi.fn((_, callback) =>
-      callback(null, { stdout: 'success', stderr: '' }),
-    ),
+    exec: vi.fn((_, callback) => callback(null, { stdout: 'success', stderr: '' })),
   },
 }))
 
@@ -35,10 +33,7 @@ describe('init', () => {
   it('should initialize site', async () => {
     await init('../../../template')
 
-    expect(cp.exec).toHaveBeenCalledWith(
-      'npm i --loglevel error',
-      expect.any(Function),
-    )
+    expect(cp.exec).toHaveBeenCalledWith('npm i --loglevel error', expect.any(Function))
     expect(fse.existsSync('./site.config.js')).toBe(true)
     expect(fse.existsSync('./package.json')).toBe(true)
     expect(fse.existsSync('./src')).toBe(true)
