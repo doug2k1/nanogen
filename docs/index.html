@@ -1,55 +1,76 @@
 <!DOCTYPE html>
 <html lang="en-US">
-<head>
-  <meta charset="UTF-8">
-<title>Nanogen</title>
-<meta name="description" content="Minimalist static site generator in Node.js"/>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#157878">
-<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="/nanogen/css/styles.css">
-
-</head>
-<body>
-<section class="page-header">
-  <h1 class="project-name">Nanogen</h1>
-  <h2 class="project-tagline">Minimalist static site generator in Node.js</h2>
-  <a href="/nanogen/" class="btn">Home</a>
-  <a href="/nanogen/docs" class="btn">Docs</a>
-  <a href="https://github.com/doug2k1/nanogen" class="btn">GitHub</a>
-</section>
-<section class="main-content">
-  
-  <h1>Nanogen</h1>
-<p><a href="https://www.npmjs.com/package/nanogen"><img src="https://img.shields.io/npm/v/nanogen.svg" alt="npm"></a>
-<img src="https://github.com/doug2k1/nanogen/actions/workflows/ci.yml/badge.svg?event=push" alt="Build Status"></p>
-<p><a href="https://app.netlify.com/start/deploy?repository=https://github.com/doug2k1/nanogen-template"><img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify"></a></p>
-<p>Minimalist static site generator, powered by <a href="https://nodejs.org/en/">Node.js</a></p>
-<h2>Features</h2>
-<ul>
-<li>Generate HTML pages from <a href="http://ejs.co/">EJS</a> and/or Markdown files.</li>
-<li>The site can have a global layout (the common header, navigation, footer) and some pages may have a specific one.</li>
-<li>It can read site metadata from a global file and have specific data for individual pages.</li>
-<li>Allow partials (blocks of reusable interface components)</li>
-</ul>
-<h2>Getting started</h2>
-<h3>Prerequisites</h3>
-<ul>
-<li><a href="https://nodejs.org/en/">Node.js</a> installed (version 20 or above)</li>
-</ul>
-<h3>Install</h3>
-<p>You may install it globally with:</p>
-<pre><code>npm i -g nanogen
+  <head>
+    <meta charset="UTF-8" />
+    <title>Nanogen</title>
+    <meta name="description" content="Minimalist static site generator in Node.js" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#157878" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/nanogen/css/styles.css" />
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Nanogen</h1>
+      <h2 class="project-tagline">Minimalist static site generator in Node.js</h2>
+      <a href="/nanogen/" class="btn">Home</a>
+      <a href="/nanogen/docs" class="btn">Docs</a>
+      <a href="https://github.com/doug2k1/nanogen" class="btn">GitHub</a>
+    </section>
+    <section class="main-content">
+      <h1>Nanogen</h1>
+      <p>
+        <a href="https://www.npmjs.com/package/nanogen"
+          ><img src="https://img.shields.io/npm/v/nanogen.svg" alt="npm"
+        /></a>
+        <img
+          src="https://github.com/doug2k1/nanogen/actions/workflows/ci.yml/badge.svg?event=push"
+          alt="Build Status"
+        />
+      </p>
+      <p>
+        <a
+          href="https://app.netlify.com/start/deploy?repository=https://github.com/doug2k1/nanogen-template"
+          ><img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify"
+        /></a>
+      </p>
+      <p>
+        Minimalist static site generator, powered by <a href="https://nodejs.org/en/">Node.js</a>
+      </p>
+      <h2>Features</h2>
+      <ul>
+        <li>Generate HTML pages from <a href="http://ejs.co/">EJS</a> and/or Markdown files.</li>
+        <li>
+          The site can have a global layout (the common header, navigation, footer) and some pages
+          may have a specific one.
+        </li>
+        <li>
+          It can read site metadata from a global file and have specific data for individual pages.
+        </li>
+        <li>Allow partials (blocks of reusable interface components)</li>
+      </ul>
+      <h2>Getting started</h2>
+      <h3>Prerequisites</h3>
+      <ul>
+        <li><a href="https://nodejs.org/en/">Node.js</a> installed (version 20 or above)</li>
+      </ul>
+      <h3>Install</h3>
+      <p>You may install it globally with:</p>
+      <pre><code>npm i -g nanogen
 </code></pre>
-<p>Or run the cli directly with npx (available with npm 5.2 or above):</p>
-<pre><code>npx nanogen &lt;command&gt;
+      <p>Or run the cli directly with npx (available with npm 5.2 or above):</p>
+      <pre><code>npx nanogen &lt;command&gt;
 </code></pre>
-<h3>Creating a new site</h3>
-<p>To create a brand new site, navigate to the folder you want your site to be and run:</p>
-<pre><code>nanogen init
+      <h3>Creating a new site</h3>
+      <p>To create a brand new site, navigate to the folder you want your site to be and run:</p>
+      <pre><code>nanogen init
 </code></pre>
-<p>This will create a initial site structure like this:</p>
-<pre><code>/
+      <p>This will create a initial site structure like this:</p>
+      <pre><code>/
   src/
     assets/
     layouts/
@@ -57,16 +78,23 @@
     partials/
   site.config.js
 </code></pre>
-<p>To build the site and open it in a browser, run:</p>
-<pre><code>npm start
+      <p>To build the site and open it in a browser, run:</p>
+      <pre><code>npm start
 </code></pre>
-<p>There is already a default layout inside the <code>layouts</code> folder, but you may add more.</p>
-<p>Read more about <a href="docs/#layouts">Layouts</a>.</p>
-<p>Inside the <code>pages</code> folder is where you put ejs, md or html files that will generate the pages of the final site. Any file name and folder structure used here will be transposed to the resulting site (without the <code>pages</code> part).</p>
-<p>Read more about <a href="docs/#pages">Pages</a>.</p>
-<h2>Available commands and options</h2>
-<p>You may run <code>nanogen -h</code> to see the available commands and options:</p>
-<pre><code>  Initialize a new site:
+      <p>
+        There is already a default layout inside the <code>layouts</code> folder, but you may add
+        more.
+      </p>
+      <p>Read more about <a href="docs/#layouts">Layouts</a>.</p>
+      <p>
+        Inside the <code>pages</code> folder is where you put ejs, md or html files that will
+        generate the pages of the final site. Any file name and folder structure used here will be
+        transposed to the resulting site (without the <code>pages</code> part).
+      </p>
+      <p>Read more about <a href="docs/#pages">Pages</a>.</p>
+      <h2>Available commands and options</h2>
+      <p>You may run <code>nanogen -h</code> to see the available commands and options:</p>
+      <pre><code>  Initialize a new site:
 
     $ nanogen init
 
@@ -85,14 +113,19 @@
     -h, --help                Display this help text
     -v, --version             Display Nanogen version
 </code></pre>
-<h2>Docs</h2>
-<p><a href="docs/">Read the full documentation</a></p>
+      <h2>Docs</h2>
+      <p><a href="docs/">Read the full documentation</a></p>
 
-
-  <footer class="site-footer">
-    <span class="site-footer-owner"><a href="https://github.com/pages-themes/cayman">cayman</a> is maintained by <a href="https://github.com/pages-themes">pages-themes</a>.</span>
-    <span class="site-footer-credits">This page was generated by <a href="https://github.com/doug2k1/nanogen">Nanogen</a>.</span>
-  </footer>
-</section>
-</body>
+      <footer class="site-footer">
+        <span class="site-footer-owner"
+          ><a href="https://github.com/pages-themes/cayman">cayman</a> is maintained by
+          <a href="https://github.com/pages-themes">pages-themes</a>.</span
+        >
+        <span class="site-footer-credits"
+          >This page was generated by
+          <a href="https://github.com/doug2k1/nanogen">Nanogen</a>.</span
+        >
+      </footer>
+    </section>
+  </body>
 </html>
