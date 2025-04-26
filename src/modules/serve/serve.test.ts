@@ -41,10 +41,7 @@ describe('serve', () => {
   })
 
   it('should watch source directory for changes', () => {
-    serve(
-      { build: { srcPath: './src', outputPath: './public' } },
-      { port: '3333' },
-    )
+    serve({ build: { srcPath: './src', outputPath: './public' } }, { port: '3333' })
 
     expect(chokidar.watch).toHaveBeenCalledWith('./src', {
       ignoreInitial: true,
@@ -56,10 +53,7 @@ describe('serve', () => {
     const mockReload = vi.fn()
 
     vi.mocked(server.serve).mockReturnValue({ reload: mockReload })
-    serve(
-      { build: { srcPath: './src', outputPath: './public' } },
-      { port: '3333' },
-    )
+    serve({ build: { srcPath: './src', outputPath: './public' } }, { port: '3333' })
 
     // Get the callback function passed to chokidar's on method
     const fileChangeCallback = mockOn.mock.lastCall?.[1]

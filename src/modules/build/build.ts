@@ -20,10 +20,7 @@ const WS_CLIENT_SCRIPT = `
 /**
  * Build the site
  */
-export const build = (
-  options = {},
-  mode = process.env.NODE_ENV || 'production',
-) => {
+export const build = (options = {}, mode = process.env.NODE_ENV || 'production') => {
   log.info('Building site...')
   const startTime = hrtime.bigint()
   const { srcPath, outputPath, cleanUrls, site } = parseOptions(options)
@@ -39,9 +36,7 @@ export const build = (
   // read pages
   const files = glob.sync('**/*.@(md|ejs|html)', { cwd: `${srcPath}/pages` })
 
-  files.forEach((file) =>
-    _buildPage(file, { srcPath, outputPath, cleanUrls, site }, mode),
-  )
+  files.forEach((file) => _buildPage(file, { srcPath, outputPath, cleanUrls, site }, mode))
 
   // display build time
   const timeDiff = process.hrtime.bigint() - startTime
@@ -61,10 +56,7 @@ interface LayoutResult {
   data: string
 }
 
-const _loadLayout = (
-  layout: string,
-  { srcPath }: LayoutConfig,
-): LayoutResult => {
+const _loadLayout = (layout: string, { srcPath }: LayoutConfig): LayoutResult => {
   const file = `${srcPath}/layouts/${layout}.ejs`
   const data = fse.readFileSync(file, 'utf-8')
 

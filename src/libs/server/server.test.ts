@@ -1,9 +1,4 @@
-import http, {
-  IncomingMessage,
-  RequestListener,
-  Server,
-  ServerResponse,
-} from 'node:http'
+import http, { IncomingMessage, RequestListener, Server, ServerResponse } from 'node:http'
 import sirv from 'sirv'
 import { describe, expect, it, vi } from 'vitest'
 import { WebSocketServer } from 'ws'
