@@ -38,7 +38,7 @@ describe('serve', function() {
 
     // then
     expect(chokidar.watch.calledOnce).to.be.true;
-    expect(chokidar.watch.getCall(0).args[0]).to.equal(
+    expect(chokidar.watch.getCall(0).args[0][1]).to.equal(
       mockConfig.build.srcPath
     );
   });
